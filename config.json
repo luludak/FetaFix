@@ -1,0 +1,896 @@
+{
+    "note": "All Models use input/output as the base format, but since on some cases there is transposition of some dims, we set the initial input and we infer the actual run input on run phase.",
+    "preprocessing_enabled": true,
+    "debug_enabled": false,
+    "backend": "tvm",
+    "runs_no": 1,
+    "initial_analysis_enabled": false,
+    "layer_analysis_enabled": false,
+    "model_repair_enabled": true,
+    "model_repair_config": {
+        "source_rel_path": "/generated/InceptionV3/models/dl_conversions/InceptionV3_torch.onnx",
+        "target_rel_path": "/generated/InceptionV3/models/dl_conversions/InceptionV3_torch_to_keras_final.onnx",
+        "out_rel_path": "/generated/InceptionV3/models/dl_repair",
+        "source_model_data": {
+            "name": "InceptionV3_torch.onnx",
+            "model_name": "torchvision_models.inception_v3",
+            "image_dimension": [299, 299],
+            "input": [1, 3, 299, 299],
+            "input_name": "inputs:0",
+            "output": [1, 1000],
+            "output_name": "output",
+            "library": "onnx",
+            "preprocessing_enabled": true,
+            "debug_enabled": true,
+            "dtype": "float32"
+        },
+        "target_model_data": {
+            "name": "InceptionV3_torch_to_keras_final.onnx",
+            "model_name": "keras.applications.inception_v3",
+            "image_dimension": [299, 299],
+            "input": [1, 299, 299, 3],
+            "input_name": "inputs:0",
+            "output_name": "output",
+            "output": [1, 1000],
+            "library": "onnx",
+            "preprocessing_enabled": true,
+            "debug_enabled": true,
+            "dtype": "float32"            
+        },
+        "settings": {
+            "enable_layer_analysis": false,
+            "enable_model_repair": true,
+            "similar_sample": 10,
+            "dissimilar_sample": 10,
+            "time_limit": 7200,
+            "no_of_layer_iterations": 3
+         }
+    },
+    "models": [
+        {
+            "name": "MobileNetV2",
+            "skip_analysis": true,
+            "build": false,
+            "execute": false, 
+            "build_dlls": true,
+            "execute_dlls": false,
+            "evaluate": false,
+            "load": "local",
+            "url": "torchvision_models.mobilenet_v2",
+            "model": "torchvision_models.mobilenet_v2",
+            "url2": "https://github.com/onnx/models/raw/main/vision/classification/mobilenet/model/mobilenetv2-7.onnx",
+            "alias": "mobilenetv2-7.onnx",
+            "type": "library",
+            "library": "torch",
+            "category": "classification",
+            "input_name": "inputs:0",
+            "output_name": "output",
+            "input_name_url": "input",
+            "layers": {
+                "image_dimension": [
+                    224,
+                    224
+                ],
+                "input": [
+                    1,
+                    3,
+                    224,
+                    224
+                ],
+                "output": [
+                    1,
+                    1000
+                ]
+            },
+            "ranks_url": "...",
+            "paths": {
+                "models_out_relative": "/generated/MobileNet-2-7/models/dl_conversions",
+                "dll_models_out_relative": "/generated/MobileNet-2-7/models/dl_conversions/",
+                "exec_out_relative": "/generated/MobileNet-2-7/dl_conversions/",
+                "dll_exec_out_relative": "/generated/MobileNet-2-7/dl_conversions/",
+                "evaluation_out_relative": "/generated/MobileNet-2-7/dl_conversions/opt2/"
+            },
+            "dll_libraries": [
+                {
+                    "library": "noop_tf",
+                    "load": "local",
+                    "opset": 9,
+                    "dependency": "mobilenet_v2.pb",
+                    "model": "mobilenet_v2.pb",
+                    "input_name": "input:0",
+                    "output_name": "MobilenetV2/Predictions/Reshape_1:0",
+                    "scalar_input": true,
+                    "input": [
+                        1,
+                        224,
+                        224,
+                        3
+                    ],
+                    "output": [
+                        1,
+                        1001
+                    ]
+                },
+                {
+                    "library": "noop_keras",
+                    "load": "library",
+                    "opset": 9,
+                    "dependency": "keras.applications.mobilenet_v2",
+                    "model": "keras.applications.MobileNetV2",
+                    "input_name": "inputs:0",
+                    "output_name": "Identity:0",
+                    "input": [
+                        1,
+                        224,
+                        224,
+                        3
+                    ],
+                    "output": [
+                        1,
+                        1000
+                    ]
+                },
+                {
+                    "library": "noop_torch",
+                    "load": "library",
+                    "dependency": "torchvision_models.mobilenet_v2",
+                    "model": "torchvision_models.mobilenet_v2",
+                    "input_name": "inputs:0",
+                    "output_name": "output",
+                    "input": [
+                        1,
+                        3,
+                        224,
+                        224
+                    ],
+                    "output": [
+                        1,
+                        1000
+                    ]
+                },
+                {
+                    "library": "noop_keras_library_to_torch",
+                    "load": "library",
+                    "opset": 11,
+                    "dependency": "keras.applications.mobilenet_v2",
+                    "model": "keras.applications.MobileNetV2",
+                    "input_name": "inputs:0",
+                    "output_name": "Identity:0",
+                    "scalar_input": true,
+                    "input": [
+                        1,
+                        224,
+                        224,
+                        3
+                    ],
+                    "output": [
+                        1,
+                        1000
+                    ]
+                },
+                {
+                    "library": "noop_keras_library_to_tflite",
+                    "load": "library",
+                    "opset": 9,
+                    "dependency": "keras.applications.mobilenet_v2",
+                    "model": "keras.applications.MobileNetV2",
+                    "input_name": "serving_default_input_1:0",
+                    "output_name": "StatefulPartitionedCall:0",
+                    "input": [
+                        1,
+                        224,
+                        224,
+                        3
+                    ],
+                    "output": [
+                        1,
+                        1000
+                    ]
+                },
+                {
+                    "library": "noop_torch_to_tf",
+                    "load": "library",
+                    "converted_lib_model_name": "torchvision_models.mobilenet_v2",
+                    "dependency": "torchvision_models.mobilenet_v2",
+                    "model": "torchvision_models.mobilenet_v2",
+                    "input_name": "input",
+                    "output_name": "output",
+                    "input": [
+                        1,
+                        3,
+                        224,
+                        224
+                    ],
+                    "output": [
+                        1,
+                        1000
+                    ]
+                },
+                {
+                    "library": "noop_torch_to_keras",
+                    "load": "library",
+                    "dependency": "torchvision_models.mobilenet_v2",
+                    "model": "torchvision_models.mobilenet_v2",
+                    "input_name": "inputs:0",
+                    "output_name": "output",
+                    "input": [
+                        1,
+                        3,
+                        224,
+                        224
+                    ],
+                    "output": [
+                        1,
+                        1000
+                    ]
+                },
+                {
+                    "library": "noop_tf_to_tflite",
+                    "load": "local",
+                    "opset": 9,
+                    "dependency": "mobilenet_v2.pb",
+                    "model": "mobilenet_v2.pb",
+                    "input_name": "input",
+                    "output_name": "MobilenetV2/Predictions/Reshape_1",
+                    "scalar_input": true,
+                    "input": [
+                        1,
+                        224,
+                        224,
+                        3
+                    ],
+                    "output": [
+                        1,
+                        1001
+                    ]
+                },
+                {
+                    "library": "noop_tf_to_keras",
+                    "load": "local",
+                    "converted_lib_model_name": "keras.applications.mobilenet_v2",
+                    "dependency": "mobilenet_v2.pb",
+                    "model": "mobilenet_v2.pb",
+                    "input_name": "input:0",
+                    "output_name": "MobilenetV2/Predictions/Reshape_1:0",
+                    "scalar_input": true,
+                    "input": [
+                        1,
+                        224,
+                        224,
+                        3
+                    ],
+                    "output": [
+                        1,
+                        1001
+                    ]
+                }
+            ]
+        },
+
+        {
+            "name": "ResNet101",
+            "skip_analysis": true,
+            "build": false,
+            "execute": false,
+            "build_dlls": true,
+            "execute_dlls": false,
+            "evaluate": false,
+            "load": "local",
+            "url": "torchvision_models.resnet101",
+            "model": "torchvision_models.resnet101",
+            "alias": "resnet-101.onnx",
+            "dll_alias": "ResNet101",
+            "type": "library",
+            "library": "torch",
+            "input_name": "inputs:0",
+            "output_name": "output",
+            "layers": {
+                "image_dimension": [
+                    224,
+                    224
+                ],
+                "input": [
+                    1,
+                    3,
+                    224,
+                    224
+                ],
+                "output": [
+                    1,
+                    1000
+                ]
+            },
+
+            "ranks_url": "...",
+            "paths": {
+                "models_out_relative": "/generated/ResNet101/models/",
+                "dll_models_out_relative": "/generated/ResNet101//models/dl_conversions/",
+                "exec_out_relative": "/generated/ResNet101/out/",
+                "dll_exec_out_relative": "/generated/ResNet101/dl/",
+                "evaluation_out_relative": "/generated/ResNet101/conversions/"
+            },
+            "dll_libraries": [
+            {
+                "library": "noop_torch",
+                "load": "library",
+                "dependency": "torchvision_models.resnet101",
+                "model": "torchvision_models.resnet101",
+                "input_name": "inputs:0",
+                "output_name": "output",
+                "image_dimension": [
+                    224,
+                    224
+                ],
+                "input": [
+                    1,
+                    3,
+                    224,
+                    224
+                ],
+                "output": [
+                    1,
+                    1000
+                ]
+            },
+            {
+                "library": "noop_tflite",
+                "load": "local",
+                "opset": 9,
+                "dependency": "resnet_v2_101.tflite",
+                "model": "resnet_v2_101.tflite",
+                "input_name": "input",
+                "scalar_input": true,
+                "output_name": "output",
+                "input": [
+                    1,
+                    3,
+                    299,
+                    299
+                ],
+                "output": [
+                    1,
+                    1001
+                ]
+            },
+            {
+                "library": "noop_tf",
+                "load": "local",
+                "opset": 13,
+                "dependency": "resnet_v2_101.pb",
+                "model": "resnet_v2_101.pb",
+                "input_name": "input:0",
+                "scalar_input": true,
+                "output_name": "resnet_v2_101/SpatialSqueeze:0",
+                "input": [
+                    1,
+                    224,
+                    224,
+                    3
+                ],
+                "output": [
+                    1,
+                    1001
+                ]
+            },
+            {
+                "library": "noop_keras",
+                "load": "library",
+                "opset": 9,
+                "dependency": "keras.applications.resnet_v2",
+                "model": "keras.applications.resnet_v2.ResNet101V2",
+                "input_name": "inputs:0",
+                "output_name": "Identity:0",
+                "input": [
+                    1,
+                    224,
+                    224,
+                    3
+                ],
+                "output": [
+                    1,
+                    1000
+                ]
+            },
+            {
+                "library": "noop_keras_library_to_tflite",
+                "load": "library",
+                "opset": 9,
+                "dependency": "keras.applications.resnet_v2",
+                "model": "keras.applications.resnet_v2.ResNet101V2",
+                "input_name": "serving_default_input_1:0",
+                "output_name": "StatefulPartitionedCall:0",
+                "input": [
+                    1,
+                    224,
+                    224,
+                    3
+                ],
+                "output": [
+                    1,
+                    1000
+                ]
+            },
+            {
+                "library": "noop_keras_library_to_torch",
+                "load": "library",
+                "opset": 11,
+                "converted_lib_model_name": "torchvision_models.resnet101",
+                "dependency": "keras.applications.resnet_v2",
+                "model": "keras.applications.resnet_v2.ResNet101V2",
+                "input_name": "inputs:0",
+                "output_name": "Identity:0",
+                "input": [
+                    1,
+                    224,
+                    224,
+                    3
+                ],
+                "output": [
+                    1,
+                    1000
+                ]
+            },
+            {
+                "library": "noop_torch_to_tflite",
+                "load": "library",
+                "opset": 11,
+                "dependency": "torchvision_models.resnet101",
+                "model": "torchvision_models.resnet101",
+                "input_name": "inputs:0",
+                "output_name": "output",
+                "input": [
+                    1,
+                    3,
+                    224,
+                    224
+                ],
+                "output": [
+                    1,
+                    1000
+                ]
+            },
+            {
+                "library": "noop_torch_to_tf",
+                "load": "library",
+                "opset": 11,
+                "dependency": "torchvision_models.resnet101",
+                "model": "torchvision_models.resnet101",
+                "input_name": "inputs",
+                "output_name": "output",
+                "image_dimension": [
+                    224,
+                    224
+                ],
+                "input": [
+                    1,
+                    3,
+                    224,
+                    224
+                ],
+                "output": [
+                    1,
+                    1000
+                ]
+            },
+            {
+                "library": "noop_tflite_to_keras",
+                "load": "local",
+                "opset": 9,
+                "converted_lib_model_name": "keras.applications.resnet_v2",
+                "dependency": "resnet_v2_101.tflite",
+                "model": "resnet_v2_101.tflite",
+                "input_name": "input",
+                "output_name": "output",
+                "image_dimension": [
+                    299,
+                    299
+                ],
+                "input": [
+                    1,
+                    299,
+                    299,
+                    3
+                ],
+                "output": [
+                    1,
+                    1001
+                ]
+            },
+            {
+                "library": "noop_tf_to_tflite",
+                "load": "local",
+                "opset": 11,
+                "dependency": "resnet_v2_101.pb",
+                "model": "resnet_v2_101.pb",
+                "input_name": "input",
+                "scalar_input": false,
+                "output_name": "output",
+                "input": [
+                    1,
+                    224,
+                    224,
+                    3
+                ],
+                "output": [
+                    1,
+                    1001
+                ]
+            },
+            {
+                "library": "noop_tf_to_keras",
+                "load": "local",
+                "opset": 11,
+                "converted_lib_model_name": "keras.applications.resnet_v2",
+                "dependency": "resnet_v2_101.pb",
+                "model": "resnet_v2_101.pb",
+                "input_name": "input:0",
+                "output_name": "output:0",
+                "scalar_input": true,
+                "image_dimension": [
+                    299,
+                    299
+                ],
+                "input": [
+                    1,
+                    299,
+                    299,
+                    3
+                    
+                ],
+                "output": [
+                    1,
+                    1,
+                    1001
+                ]
+            }]
+        },
+        {
+            "name": "InceptionV3",
+            "skip_analysis": true,
+            "build": false,
+            "execute": false,
+            "evaluate": false,
+            "build_dlls": true,
+            "execute_dlls": false,
+            "evaluate_dlls": false,
+            "load": "local",
+            "url": "torchvision_models.inception_v3",
+            "model": "torchvision_models.inception_v3",
+            "url2": "/generated/InceptionV3/models/InceptionV3_torch.onnx",
+            "alias": "inceptionv3_torch.onnx",
+            "type": "library",
+            "library": "torch",
+            "category": "classification",
+            "input_name": "inputs:0",
+            "output_name": "output",
+            "input_name_url": "inputs:0",
+            "dl_input_name": "inputs:0",
+            "layers": {
+                "image_dimension": [
+                    299,
+                    299
+                ],
+                "input": [
+                    1,
+                    3,
+                    299,
+                    299
+                ],
+                "output": [
+                    1,
+                    1000
+                ]
+            },
+            "ranks_url": "...",
+            "paths": {
+                "models_out_relative": "/generated/InceptionV3/models/",
+                "dll_models_out_relative": "/generated/InceptionV3/models/dl_conversions/",
+                "exec_out_relative": "/generated/InceptionV3/out/",
+                "dll_exec_out_relative": "/generated/InceptionV3/conversions/",
+                "evaluation_out_relative": "/generated/InceptionV3/conversions/"
+            },
+            "dll_libraries": [
+                {
+                    "library": "noop_tflite",
+                    "load": "local",
+                    "dependency": "inception_v3.tflite",
+                    "model": "inception_v3.tflite",
+                    "input_name": "input",
+                    "output_name": "InceptionV3/Predictions/Reshape_1",
+                    "scalar_input": false,
+                    "input": [
+                        1,
+                        3,
+                        299,
+                        299
+                    ],
+                    "output": [
+                        1,
+                        1001
+                    ]
+                },
+                {
+                    "library": "noop_tf",
+                    "load": "local",
+                    "dependency": "InceptionV3.pb",
+                    "model": "InceptionV3.pb",
+                    "input_name": "input:0",
+                    "output_name": "InceptionV3/Predictions/Softmax:0",
+                    "scalar_input": false,
+                    "input": [
+                        1,
+                        299,
+                        299,
+                        3
+                    ],
+                    "output": [
+                        1,
+                        1001
+                    ]
+                },
+                {
+                    "library": "noop_tf_to_tflite",
+                    "load": "local",
+                    "dependency": "InceptionV3.pb",
+                    "model": "InceptionV3.pb",
+                    "input_name": "input",
+                    "output_name": "InceptionV3/Predictions/Softmax",
+                    "scalar_input": false,
+                    "input": [
+                        1,
+                        299,
+                        299,
+                        3
+                    ],
+                    "output": [
+                        1,
+                        1001
+                    ]
+                },
+                {
+                    "library": "noop_torch_to_tflite",
+                    "load": "library",
+                    "dependency": "torchvision_models.inception_v3",
+                    "model": "torchvision_models.inception_v3",
+                    "input_name": "inputs:0",
+                    "output_name": "output",
+                    "input": [
+                        1,
+                        3,
+                        299,
+                        299
+                    ],
+                    "output": [
+                        1,
+                        1000
+                    ]
+                },
+                {
+                    "library": "noop_torch_to_keras",
+                    "load": "library",
+                    "converted_lib_model_name": "keras.applications.inception_v3",
+                    "dependency": "keras.applications.inception_v3",
+                    "model": "keras.applications.inception_v3",
+                    "input_name": "inputs:0",
+                    "output_name": "output",
+                    "input": [
+                        1,
+                        3,
+                        299,
+                        299
+                    ],
+                    "output": [
+                        1,
+                        1000
+                    ]
+                },
+                {
+                    "library": "noop_torch",
+                    "load": "library",
+                    "dependency": "torchvision_models.inception_v3",
+                    "model": "torchvision_models.inception_v3",
+                    "input_name": "inputs:0",
+                    "output_name": "output",
+                    "input": [
+                        1,
+                        3,
+                        299,
+                        299
+                    ],
+                    "output": [
+                        1,
+                        1000
+                    ]
+                },
+                {
+                    "library": "noop_tf_to_torch",
+                    "load": "local",
+                    "dependency": "InceptionV3.pb",
+                    "converted_lib_model_name": "torchvision_models.inception_v3",
+                    "model": "InceptionV3.pb",
+                    "input_name": "input:0",
+                    "output_name": "InceptionV3/Predictions/Softmax:0",
+                    "scalar_input": false,
+                    "input": [
+                        1,
+                        299,
+                        299,
+                        3
+                    ],
+                    "output": [
+                        1,
+                        1001
+                    ]
+                },
+                {
+                    "library": "noop_tflite_to_tf",
+                    "load": "local",
+                    "dependency": "inception_v3.tflite",
+                    "model": "inception_v3.tflite",
+                    "input_name": "input",
+                    "output_name": "InceptionV3/Predictions/Reshape_1",
+                    "scalar_input": false,
+                    "input": [
+                        1,
+                        3,
+                        299,
+                        299
+                    ],
+                    "output": [
+                        1,
+                        1001
+                    ]
+                },
+                {
+                    "library": "noop_tflite_to_torch",
+                    "load": "local",
+                    "converted_lib_model_name": "torchvision_models.inception_v3",
+                    "dependency": "inception_v3.tflite",
+                    "model": "inception_v3.tflite",
+                    "input_name": "input",
+                    "output_name": "InceptionV3/Predictions/Reshape_1",
+                    "scalar_input": false,
+                    "input": [
+                        1,
+                        299,
+                        299,
+                        3
+                    ],
+                    "output": [
+                        1,
+                        1001
+                    ]
+                },
+                {
+                    "library": "noop_torch_to_tf",
+                    "load": "library",
+                    "dependency": "torchvision_models.inception_v3",
+                    "model": "torchvision_models.inception_v3",
+                    "input_name": "inputs:0",
+                    "output_name": "output",
+                    "input": [
+                        1,
+                        3,
+                        299,
+                        299
+                    ],
+                    "output": [
+                        1,
+                        1000
+                    ]
+                }
+            ]
+        }
+    ],
+    "devices": {
+        "id": 0,
+        "selected": "default",
+        "default": {
+            "host_type": "local_no_rpc",
+            "target": "opencl",
+            "target_framework": "opencl",
+            "host": "llvm",
+            "address": "127.0.0.1",
+            "port": 5000
+        },
+        "default_cuda": {
+            "host_type": "local_no_rpc",
+            "target": "cuda",
+            "target_framework": "cuda",
+            "host": "llvm -mtriple=aarch64-linux-gnu -mattr=+neon",
+            "address": "127.0.0.1",
+            "port": 5000
+        },
+        "hikey_gansey": {
+            "host_type": "remote",
+            "target": "opencl",
+            "target_framework": "opencl",
+            "host": "llvm -mtriple=aarch64-linux-gnu -mattr=+neon",
+            "address": "",
+            "port": 9190
+        },
+        "hikey_whelk": {
+            "host_type": "remote",
+            "target": "opencl",
+            "target_framework": "opencl",
+            "host": "llvm -mtriple=aarch64-linux-gnu -mattr=+neon",
+            "address": "",
+            "port": 9190
+        },
+        "nano_yentl": {
+            "target": "cuda",
+            "target_framework": "cuda",
+            "host": "llvm -mtriple=aarch64-linux-gnu -mattr=+neon",
+            "host_type": "remote",
+            "address": "",
+            "port": 9190
+        },
+        "xavier_jetson": {
+            "target": "cuda",
+            "target_framework": "cuda",
+            "host": "llvm -mtriple=aarch64-linux-gnu -mattr=+neon",
+            "host_type": "remote",
+            "address": "",
+            "port": 9190
+        },
+        "xavier_gluck": {
+            "target": "cuda",
+            "target_framework": "cuda",
+            "host": "llvm -mtriple=aarch64-linux-gnu -mattr=+neon",
+            "host_type": "remote",
+            "address": "",
+            "port": 9190
+        },
+        "rpi4": {
+            "host_type": "remote",
+            "target_framework": "opencl",
+            "target": "llvm -mtriple=armv8l-linux-gnueabihf -model=bcm2711 -mattr=+neon -mcpu=cortex-a72",
+            "host": "llvm -mtriple=armv8l-linux-gnueabihf -model=bcm2711 -mattr=+neon -mcpu=cortex-a72",
+            "port": 2083,
+            "address": ""
+        },
+        "local_cpu": {
+            "host_type": "local",
+            "target_framework": "cpu",
+            "target": "llvm -mtriple=x86_64-linux-gnu -mcpu=core-avx2",
+            "host": "llvm -mtriple=x86_64-linux-gnu -mcpu=core-avx2",
+            "address": "127.0.0.1",
+            "port": 5000
+        }
+    },
+    "selected_dataset": 0,
+    "datasets": [
+        {
+            "title": "Fix Test Dataset",
+            "type": "local",
+            "dataset_path_relative": "/images/Test"
+        },
+        {
+            "title": "Smallest Dataset",
+            "type": "local",
+            "dataset_path_relative": "/images/tk_fix"
+        },
+        {
+            "title": "Large Dataset",
+            "type": "local",
+            "dataset_path_relative": "/images/ImageNet-2017-5k"
+        }
+    ],
+    "opt_alias": "",
+    "required_pass": null,
+    "disabled_pass": [
+        "OpFusion",
+        "FoldConstant",
+        "FoldScaleAxis",
+        "AlterOpLayout",
+        "CanonicalizeOps",
+        "CanonicalizeCast",
+        "EliminateCommonSubexpr",
+        "CombineParallelConv2D",
+        "CombineParallelBatchMatmul",
+        "CombineParallelDense",
+        "FastMath"
+    ],
+    "opt_level": 2,
+    "quantize": false
+}
