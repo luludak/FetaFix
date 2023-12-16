@@ -94,19 +94,7 @@ Set the global setting to `"model_repair_enabled": true`. Also, adjust the `mode
 
 
 ### CLOC:
-ConRepAIr was built on top of DeltaNN, but consists of 2090 LOC for its Fault Localization & Repair capabilities. In total:
-
-```
--------------------------------------------------------------------------------
-Language                     files          blank        comment           code
--------------------------------------------------------------------------------
-Python                          49           2223           1181           6505
-JSON                             1              3              0            893
-Markdown                         1             34              0             84
--------------------------------------------------------------------------------
-SUM:                            51           2260           1181           7482
--------------------------------------------------------------------------------
-```
+ConRepAIr was built on top of DeltaNN, but consists of `2090` LOC for its Fault Localization & Repair capabilities.
 
 ### Raw Results Data:
 Accompanying our contribution, we provide raw data for our experiments.
