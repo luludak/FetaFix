@@ -1,15 +1,13 @@
 # ConRepAIr
 
 ConRepAIr is a comprehensive suite for compiling, optimizing, executing and analyzing pretrained DNNs under different computational environment settings.
-The system is based on DeltaNN by Louloudakis et al.: [Project](https://github.com/luludak/DeltaNN) | [Paper](https://arxiv.org/abs/2306.06208)
-
 
 ConRepAIr supports:
 
 - Automatic Fault Localization across ONNX model correspondents (Source and Target) between a DL framework conversion.
 - Automatic Fault Repair of the Target model, if behavior is deviating from Source, by repairing model input, graph, parameters and hyperparameters.
 
-Utilizing (and integrating) the following features from DeltaNN:
+Also, it can:
 - Build of Neural Networks using different backend DL Frameworks.
 - Build of DNNs under different optimization settings.
 - Build of DNNs using different GPU backends (CUDA, OpenCL, etc).
@@ -92,10 +90,6 @@ Console will indicate the status of the running model and update accordingly.
 
 #### Fault Localization/Repair:
 Set the global setting to `"model_repair_enabled": true`. Also, adjust the `model_repair_config` object to your needs, setting paths, options and settings for `Source` and `Target` models.
-
-
-### CLOC:
-ConRepAIr was built on top of DeltaNN, but consists of `2090` LOC for its Fault Localization & Repair capabilities.
 
 ### Raw Results Data:
 Accompanying our contribution, we provide raw data for our experiments.
