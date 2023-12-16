@@ -11,9 +11,9 @@ Also, it can:
 - Build of Neural Networks using different backend DL Frameworks.
 - Build of DNNs under different optimization settings.
 - Build of DNNs using different GPU backends (CUDA, OpenCL, etc).
-- Conversion of DNNs from one backend framework to another (currently supporting all conversions across Keras, PyTorch, TF, TFlite).
-- Executing DNNs in different hardware acceleration environments.
-- Analyzing the results in a bundled and automated manner.
+- Convert oDNNs from one backend framework to another (currently supporting all conversions across Keras, PyTorch, TF, TFlite).
+- Execute DNNs in different hardware acceleration environments.
+- Analyze the results in a bundled and automated manner.
 
 The suite is based on [Apache TVM](https://tvm.apache.org/) for its capabilities.
 
