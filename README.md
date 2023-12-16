@@ -1,6 +1,6 @@
 # ConRepAIr
 
-ConRepAIr is a comprehensive suite for compiling, optimizing, executing and analyzing pretrained DNNs under different computational environment settings. The system is based on DeltaNN by Louloudakis et al.: [Project](https://github.com/luludak/DeltaNN) | [Paper] (https://arxiv.org/abs/2306.06208)
+ConRepAIr is a comprehensive suite for compiling, optimizing, executing and analyzing pretrained DNNs under different computational environment settings. The system is based on DeltaNN by Louloudakis et al.: [Project](https://github.com/luludak/DeltaNN) | [Paper](https://arxiv.org/abs/2306.06208)
 
 
 ConRepAIr supports:
