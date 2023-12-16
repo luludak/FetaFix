@@ -1,0 +1,727 @@
+[
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (auto_pad) missing in source.\nMobilenetV2/Conv/BatchNorm/FusedBatchNorm vs Conv__240"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv/project/BatchNorm/FusedBatchNorm vs model/conv2d_1/BiasAdd"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_1/expand/BatchNorm/FusedBatchNorm vs model/conv2d_2/BiasAdd"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_1/depthwise/depthwise vs Conv__242"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_1/project/BatchNorm/FusedBatchNorm vs model/conv2d_3/BiasAdd"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_2/expand/BatchNorm/FusedBatchNorm vs model/conv2d_4/BiasAdd"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_2/project/BatchNorm/FusedBatchNorm vs model/conv2d_5/BiasAdd"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_3/expand/BatchNorm/FusedBatchNorm vs model/conv2d_6/BiasAdd"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_3/depthwise/depthwise vs Conv__246"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_3/project/BatchNorm/FusedBatchNorm vs model/conv2d_7/BiasAdd"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_4/expand/BatchNorm/FusedBatchNorm vs model/conv2d_8/BiasAdd"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_4/project/BatchNorm/FusedBatchNorm vs model/conv2d_9/BiasAdd"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_5/expand/BatchNorm/FusedBatchNorm vs model/conv2d_10/BiasAdd"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_5/project/BatchNorm/FusedBatchNorm vs model/conv2d_11/BiasAdd"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_6/expand/BatchNorm/FusedBatchNorm vs model/conv2d_12/BiasAdd"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_6/depthwise/depthwise vs Conv__253"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_6/project/BatchNorm/FusedBatchNorm vs model/conv2d_13/BiasAdd"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_7/expand/BatchNorm/FusedBatchNorm vs model/conv2d_14/BiasAdd"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_7/project/BatchNorm/FusedBatchNorm vs model/conv2d_15/BiasAdd"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_8/expand/BatchNorm/FusedBatchNorm vs model/conv2d_16/BiasAdd"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_8/project/BatchNorm/FusedBatchNorm vs model/conv2d_17/BiasAdd"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_9/expand/BatchNorm/FusedBatchNorm vs model/conv2d_18/BiasAdd"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_9/project/BatchNorm/FusedBatchNorm vs model/conv2d_19/BiasAdd"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_10/expand/BatchNorm/FusedBatchNorm vs model/conv2d_20/BiasAdd"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_10/project/BatchNorm/FusedBatchNorm vs model/conv2d_21/BiasAdd"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_11/expand/BatchNorm/FusedBatchNorm vs model/conv2d_22/BiasAdd"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_11/project/BatchNorm/FusedBatchNorm vs model/conv2d_23/BiasAdd"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_12/expand/BatchNorm/FusedBatchNorm vs model/conv2d_24/BiasAdd"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_12/project/BatchNorm/FusedBatchNorm vs model/conv2d_25/BiasAdd"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_13/expand/BatchNorm/FusedBatchNorm vs model/conv2d_26/BiasAdd"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_13/depthwise/depthwise vs Conv__270"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_13/project/BatchNorm/FusedBatchNorm vs model/conv2d_27/BiasAdd"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_14/expand/BatchNorm/FusedBatchNorm vs model/conv2d_28/BiasAdd"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_14/project/BatchNorm/FusedBatchNorm vs model/conv2d_29/BiasAdd"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_15/expand/BatchNorm/FusedBatchNorm vs model/conv2d_30/BiasAdd"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_15/project/BatchNorm/FusedBatchNorm vs model/conv2d_31/BiasAdd"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_16/expand/BatchNorm/FusedBatchNorm vs model/conv2d_32/BiasAdd"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/expanded_conv_16/project/BatchNorm/FusedBatchNorm vs model/conv2d_33/BiasAdd"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/Conv_1/BatchNorm/FusedBatchNorm vs model/conv2d_34/BiasAdd"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.MobilenetV2/Logits/Conv2d_1c_1x1/BiasAdd vs model/conv2d_35/BiasAdd"
+    }
+  ],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  {
+    "execution_time": "333.7375135421753"
+  }
+]

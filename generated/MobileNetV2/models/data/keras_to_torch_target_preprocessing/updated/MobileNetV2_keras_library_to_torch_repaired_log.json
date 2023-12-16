@@ -1,0 +1,42 @@
+[
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) shape mismatch.\nmobilenetv2_1.00_224/Conv1/Conv2D vs Conv_16\n[0, 0, 1, 1] vs [0, 0, 0, 0]"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in source.\nmobilenetv2_1.00_224/block_1_depthwise/depthwise vs Conv_44"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in source.\nmobilenetv2_1.00_224/block_3_depthwise/depthwise vs Conv_78"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in source.\nmobilenetv2_1.00_224/block_6_depthwise/depthwise vs Conv_122"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in source.\nmobilenetv2_1.00_224/block_13_depthwise/depthwise vs Conv_205"
+    }
+  ],
+  [
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in source.\nmobilenetv2_1.00_224/Conv_1/Conv2D vs Conv_239"
+    }
+  ],
+  {
+    "total_modifications": "6",
+    "execution_time": "838.2885613441467"
+  }
+]

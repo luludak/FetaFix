@@ -1,0 +1,2142 @@
+[
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 0: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 1: Parameter mismatch - index 1.",
+        "Layer 1: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 2: Parameter mismatch - index 1.",
+        "Layer 2: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 3: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 4: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 5: Parameter mismatch - index 1.",
+        "Layer 5: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 6: Parameter mismatch - index 1.",
+        "Layer 6: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 7: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 8: Parameter mismatch - index 1.",
+        "Layer 8: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 9: Parameter mismatch - index 1.",
+        "Layer 9: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 10: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 11: Parameter mismatch - index 1.",
+        "Layer 11: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 13: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 15: Parameter mismatch - index 1.",
+        "Layer 15: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 16: Parameter mismatch - index 1.",
+        "Layer 16: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 17: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 18: Parameter mismatch - index 1.",
+        "Layer 18: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 19: Parameter mismatch - index 1.",
+        "Layer 19: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 20: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 23: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 24: Parameter mismatch - index 1.",
+        "Layer 24: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 25: Parameter mismatch - index 1.",
+        "Layer 25: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 26: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 27: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 28: Parameter mismatch - index 1.",
+        "Layer 28: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 29: Parameter mismatch - index 1.",
+        "Layer 29: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 30: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 31: Parameter mismatch - index 1.",
+        "Layer 31: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 32: Parameter mismatch - index 1.",
+        "Layer 32: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 33: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 34: Parameter mismatch - index 1.",
+        "Layer 34: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 35: Parameter mismatch - index 1.",
+        "Layer 35: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 36: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 37: Parameter mismatch - index 1.",
+        "Layer 37: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 38: Parameter mismatch - index 1.",
+        "Layer 38: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 12: Parameter mismatch - index 1.",
+        "Layer 12: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 14: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 39: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 40: Parameter mismatch - index 1.",
+        "Layer 40: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 41: Parameter mismatch - index 1.",
+        "Layer 41: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 42: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 43: Parameter mismatch - index 1.",
+        "Layer 43: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 44: Parameter mismatch - index 1.",
+        "Layer 44: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 45: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 46: Parameter mismatch - index 1.",
+        "Layer 46: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 47: Parameter mismatch - index 1.",
+        "Layer 47: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 48: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 49: Parameter mismatch - index 1.",
+        "Layer 49: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 50: Parameter mismatch - index 1.",
+        "Layer 50: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 51: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 52: Parameter mismatch - index 1.",
+        "Layer 52: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 53: Parameter mismatch - index 1.",
+        "Layer 53: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 54: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 55: Parameter mismatch - index 1.",
+        "Layer 55: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 56: Parameter mismatch - index 1.",
+        "Layer 56: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 57: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 58: Parameter mismatch - index 1.",
+        "Layer 58: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 59: Parameter mismatch - index 1.",
+        "Layer 59: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 60: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 61: Parameter mismatch - index 1.",
+        "Layer 61: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 62: Parameter mismatch - index 1.",
+        "Layer 62: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 63: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 64: Parameter mismatch - index 1.",
+        "Layer 64: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 65: Parameter mismatch - index 1.",
+        "Layer 65: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 66: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 67: Parameter mismatch - index 1.",
+        "Layer 67: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 68: Parameter mismatch - index 1.",
+        "Layer 68: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 69: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 70: Parameter mismatch - index 1.",
+        "Layer 70: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 71: Parameter mismatch - index 1.",
+        "Layer 71: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 72: Parameter mismatch - index 1.",
+        "Layer 72: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 73: Parameter mismatch - index 1.",
+        "Layer 73: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 74: Parameter mismatch - index 1.",
+        "Layer 74: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 75: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 76: Parameter mismatch - index 1.",
+        "Layer 76: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 77: Parameter mismatch - index 1.",
+        "Layer 77: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 78: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 79: Parameter mismatch - index 1.",
+        "Layer 79: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 80: Parameter mismatch - index 1.",
+        "Layer 80: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 81: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 82: Parameter mismatch - index 1.",
+        "Layer 82: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 83: Parameter mismatch - index 1.",
+        "Layer 83: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 85: Parameter mismatch - index 1.",
+        "Layer 85: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 86: Parameter mismatch - index 1.",
+        "Layer 86: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 87: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 88: Parameter mismatch - index 1.",
+        "Layer 88: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 89: Parameter mismatch - index 1.",
+        "Layer 89: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 90: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 91: Parameter mismatch - index 1.",
+        "Layer 91: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 92: Parameter mismatch - index 1.",
+        "Layer 92: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 93: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 94: Parameter mismatch - index 1.",
+        "Layer 94: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 95: Parameter mismatch - index 1.",
+        "Layer 95: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 96: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 97: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 98: Parameter mismatch - index 1.",
+        "Layer 98: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 99: Parameter mismatch - index 1.",
+        "Layer 99: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 100: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 101: Parameter mismatch - index 1.",
+        "Layer 101: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 102: Parameter mismatch - index 1.",
+        "Layer 102: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 103: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv",
+        "Add",
+        "Mul",
+        "Clip",
+        "GlobalAveragePool",
+        "Flatten",
+        "Gemm",
+        "AveragePool",
+        "Relu",
+        "MaxPool",
+        "Squeeze",
+        "Reshape",
+        "BatchNormalization",
+        "Flatten"
+      ],
+      "overview": [
+        "Layer 21: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv",
+        "Add",
+        "Mul",
+        "Clip",
+        "GlobalAveragePool",
+        "Flatten",
+        "Gemm",
+        "AveragePool",
+        "Relu",
+        "MaxPool",
+        "Squeeze",
+        "Reshape",
+        "BatchNormalization",
+        "Flatten"
+      ],
+      "overview": [
+        "Layer 22: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 1,
+      "update_structure": {
+        "source_name": "resnet101v2/conv2_block1_1_conv/Conv2D",
+        "target_name": "resnet101v2/conv2_block1_1_relu/Relu;resnet101v2/conv2_block1_1_bn/FusedBatchNormV3;resnet101v2/conv2_block3_2_conv/Conv2D;resnet101v2/conv2_block1_1_conv/Conv2D",
+        "source_structure": [
+          "Pad",
+          "MaxPool",
+          "BatchNormalization",
+          "Relu"
+        ],
+        "target_structure": [
+          "Pad",
+          "MaxPool",
+          "Mul",
+          "Add",
+          "Relu"
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 2,
+      "update_structure": {
+        "source_name": "resnet101v2/conv2_block1_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv2_block1_2_relu/Relu;resnet101v2/conv2_block1_2_bn/FusedBatchNormV3;resnet101v2/conv2_block3_2_conv/Conv2D;resnet101v2/conv2_block1_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv2_block1_2_conv/Conv2D vs resnet101v2/conv2_block1_2_relu/Relu;resnet101v2/conv2_block1_2_bn/FusedBatchNormV3;resnet101v2/conv2_block3_2_conv/Conv2D;resnet101v2/conv2_block1_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 6,
+      "update_structure": {
+        "source_name": "resnet101v2/conv2_block2_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv2_block2_2_relu/Relu;resnet101v2/conv2_block2_2_bn/FusedBatchNormV3;resnet101v2/conv2_block3_2_conv/Conv2D;resnet101v2/conv2_block2_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv2_block2_2_conv/Conv2D vs resnet101v2/conv2_block2_2_relu/Relu;resnet101v2/conv2_block2_2_bn/FusedBatchNormV3;resnet101v2/conv2_block3_2_conv/Conv2D;resnet101v2/conv2_block2_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 9,
+      "update_structure": {
+        "source_name": "resnet101v2/conv2_block3_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv2_block3_2_relu/Relu;resnet101v2/conv2_block3_2_bn/FusedBatchNormV3;resnet101v2/conv2_block3_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv2_block3_2_conv/Conv2D vs resnet101v2/conv2_block3_2_relu/Relu;resnet101v2/conv2_block3_2_bn/FusedBatchNormV3;resnet101v2/conv2_block3_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 11,
+      "update_structure": {
+        "source_name": "resnet101v2/conv3_block1_1_conv/Conv2D",
+        "target_name": "resnet101v2/conv3_block1_1_relu/Relu;resnet101v2/conv3_block1_1_bn/FusedBatchNormV3;resnet101v2/conv3_block4_2_conv/Conv2D;resnet101v2/conv3_block1_1_conv/Conv2D",
+        "source_structure": [
+          "BatchNormalization",
+          "Relu"
+        ],
+        "target_structure": [
+          "Mul",
+          "Add",
+          "Relu"
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 12,
+      "update_structure": {
+        "source_name": "resnet101v2/conv3_block1_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv3_block1_2_relu/Relu;resnet101v2/conv3_block1_2_bn/FusedBatchNormV3;resnet101v2/conv3_block4_2_conv/Conv2D;resnet101v2/conv3_block1_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv3_block1_2_conv/Conv2D vs resnet101v2/conv3_block1_2_relu/Relu;resnet101v2/conv3_block1_2_bn/FusedBatchNormV3;resnet101v2/conv3_block4_2_conv/Conv2D;resnet101v2/conv3_block1_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 16,
+      "update_structure": {
+        "source_name": "resnet101v2/conv3_block2_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv3_block2_2_relu/Relu;resnet101v2/conv3_block2_2_bn/FusedBatchNormV3;resnet101v2/conv3_block4_2_conv/Conv2D;resnet101v2/conv3_block2_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv3_block2_2_conv/Conv2D vs resnet101v2/conv3_block2_2_relu/Relu;resnet101v2/conv3_block2_2_bn/FusedBatchNormV3;resnet101v2/conv3_block4_2_conv/Conv2D;resnet101v2/conv3_block2_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 19,
+      "update_structure": {
+        "source_name": "resnet101v2/conv3_block3_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv3_block3_2_relu/Relu;resnet101v2/conv3_block3_2_bn/FusedBatchNormV3;resnet101v2/conv3_block4_2_conv/Conv2D;resnet101v2/conv3_block3_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv3_block3_2_conv/Conv2D vs resnet101v2/conv3_block3_2_relu/Relu;resnet101v2/conv3_block3_2_bn/FusedBatchNormV3;resnet101v2/conv3_block4_2_conv/Conv2D;resnet101v2/conv3_block3_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 22,
+      "update_structure": {
+        "source_name": "resnet101v2/conv3_block4_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv3_block4_2_relu/Relu;resnet101v2/conv3_block4_2_bn/FusedBatchNormV3;resnet101v2/conv3_block4_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv3_block4_2_conv/Conv2D vs resnet101v2/conv3_block4_2_relu/Relu;resnet101v2/conv3_block4_2_bn/FusedBatchNormV3;resnet101v2/conv3_block4_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 24,
+      "update_structure": {
+        "source_name": "resnet101v2/conv4_block1_1_conv/Conv2D",
+        "target_name": "resnet101v2/conv4_block1_1_relu/Relu;resnet101v2/conv4_block1_1_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block1_1_conv/Conv2D",
+        "source_structure": [
+          "BatchNormalization",
+          "Relu"
+        ],
+        "target_structure": [
+          "Mul",
+          "Add",
+          "Relu"
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 25,
+      "update_structure": {
+        "source_name": "resnet101v2/conv4_block1_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv4_block1_2_relu/Relu;resnet101v2/conv4_block1_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block1_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv4_block1_2_conv/Conv2D vs resnet101v2/conv4_block1_2_relu/Relu;resnet101v2/conv4_block1_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block1_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 29,
+      "update_structure": {
+        "source_name": "resnet101v2/conv4_block2_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv4_block2_2_relu/Relu;resnet101v2/conv4_block2_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block2_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv4_block2_2_conv/Conv2D vs resnet101v2/conv4_block2_2_relu/Relu;resnet101v2/conv4_block2_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block2_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 32,
+      "update_structure": {
+        "source_name": "resnet101v2/conv4_block3_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv4_block3_2_relu/Relu;resnet101v2/conv4_block3_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block3_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv4_block3_2_conv/Conv2D vs resnet101v2/conv4_block3_2_relu/Relu;resnet101v2/conv4_block3_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block3_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 35,
+      "update_structure": {
+        "source_name": "resnet101v2/conv4_block4_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv4_block4_2_relu/Relu;resnet101v2/conv4_block4_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block4_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv4_block4_2_conv/Conv2D vs resnet101v2/conv4_block4_2_relu/Relu;resnet101v2/conv4_block4_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block4_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 38,
+      "update_structure": {
+        "source_name": "resnet101v2/conv4_block5_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv4_block5_2_relu/Relu;resnet101v2/conv4_block5_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block5_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv4_block5_2_conv/Conv2D vs resnet101v2/conv4_block5_2_relu/Relu;resnet101v2/conv4_block5_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block5_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 41,
+      "update_structure": {
+        "source_name": "resnet101v2/conv4_block6_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv4_block6_2_relu/Relu;resnet101v2/conv4_block6_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block6_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv4_block6_2_conv/Conv2D vs resnet101v2/conv4_block6_2_relu/Relu;resnet101v2/conv4_block6_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block6_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 44,
+      "update_structure": {
+        "source_name": "resnet101v2/conv4_block7_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv4_block7_2_relu/Relu;resnet101v2/conv4_block7_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block7_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv4_block7_2_conv/Conv2D vs resnet101v2/conv4_block7_2_relu/Relu;resnet101v2/conv4_block7_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block7_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 47,
+      "update_structure": {
+        "source_name": "resnet101v2/conv4_block8_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv4_block8_2_relu/Relu;resnet101v2/conv4_block8_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block8_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv4_block8_2_conv/Conv2D vs resnet101v2/conv4_block8_2_relu/Relu;resnet101v2/conv4_block8_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block8_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 50,
+      "update_structure": {
+        "source_name": "resnet101v2/conv4_block9_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv4_block9_2_relu/Relu;resnet101v2/conv4_block9_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block9_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv4_block9_2_conv/Conv2D vs resnet101v2/conv4_block9_2_relu/Relu;resnet101v2/conv4_block9_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block9_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 53,
+      "update_structure": {
+        "source_name": "resnet101v2/conv4_block10_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv4_block10_2_relu/Relu;resnet101v2/conv4_block10_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block10_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv4_block10_2_conv/Conv2D vs resnet101v2/conv4_block10_2_relu/Relu;resnet101v2/conv4_block10_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block10_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 56,
+      "update_structure": {
+        "source_name": "resnet101v2/conv4_block11_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv4_block11_2_relu/Relu;resnet101v2/conv4_block11_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block11_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv4_block11_2_conv/Conv2D vs resnet101v2/conv4_block11_2_relu/Relu;resnet101v2/conv4_block11_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block11_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 59,
+      "update_structure": {
+        "source_name": "resnet101v2/conv4_block12_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv4_block12_2_relu/Relu;resnet101v2/conv4_block12_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block12_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv4_block12_2_conv/Conv2D vs resnet101v2/conv4_block12_2_relu/Relu;resnet101v2/conv4_block12_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block12_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 62,
+      "update_structure": {
+        "source_name": "resnet101v2/conv4_block13_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv4_block13_2_relu/Relu;resnet101v2/conv4_block13_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block13_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv4_block13_2_conv/Conv2D vs resnet101v2/conv4_block13_2_relu/Relu;resnet101v2/conv4_block13_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block13_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 65,
+      "update_structure": {
+        "source_name": "resnet101v2/conv4_block14_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv4_block14_2_relu/Relu;resnet101v2/conv4_block14_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block14_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv4_block14_2_conv/Conv2D vs resnet101v2/conv4_block14_2_relu/Relu;resnet101v2/conv4_block14_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block14_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 68,
+      "update_structure": {
+        "source_name": "resnet101v2/conv4_block15_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv4_block15_2_relu/Relu;resnet101v2/conv4_block15_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block15_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv4_block15_2_conv/Conv2D vs resnet101v2/conv4_block15_2_relu/Relu;resnet101v2/conv4_block15_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block15_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 71,
+      "update_structure": {
+        "source_name": "resnet101v2/conv4_block16_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv4_block16_2_relu/Relu;resnet101v2/conv4_block16_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block16_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv4_block16_2_conv/Conv2D vs resnet101v2/conv4_block16_2_relu/Relu;resnet101v2/conv4_block16_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block16_2_conv/Conv2D"
+    }
+  ],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 74,
+      "update_structure": {
+        "source_name": "resnet101v2/conv4_block17_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv4_block17_2_relu/Relu;resnet101v2/conv4_block17_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block17_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv4_block17_2_conv/Conv2D vs resnet101v2/conv4_block17_2_relu/Relu;resnet101v2/conv4_block17_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block17_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 77,
+      "update_structure": {
+        "source_name": "resnet101v2/conv4_block18_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv4_block18_2_relu/Relu;resnet101v2/conv4_block18_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block18_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv4_block18_2_conv/Conv2D vs resnet101v2/conv4_block18_2_relu/Relu;resnet101v2/conv4_block18_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block18_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 80,
+      "update_structure": {
+        "source_name": "resnet101v2/conv4_block19_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv4_block19_2_relu/Relu;resnet101v2/conv4_block19_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block19_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv4_block19_2_conv/Conv2D vs resnet101v2/conv4_block19_2_relu/Relu;resnet101v2/conv4_block19_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block19_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 83,
+      "update_structure": {
+        "source_name": "resnet101v2/conv4_block20_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv4_block20_2_relu/Relu;resnet101v2/conv4_block20_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block20_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv4_block20_2_conv/Conv2D vs resnet101v2/conv4_block20_2_relu/Relu;resnet101v2/conv4_block20_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block20_2_conv/Conv2D"
+    }
+  ],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 86,
+      "update_structure": {
+        "source_name": "resnet101v2/conv4_block21_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv4_block21_2_relu/Relu;resnet101v2/conv4_block21_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block21_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv4_block21_2_conv/Conv2D vs resnet101v2/conv4_block21_2_relu/Relu;resnet101v2/conv4_block21_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block21_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 89,
+      "update_structure": {
+        "source_name": "resnet101v2/conv4_block22_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv4_block22_2_relu/Relu;resnet101v2/conv4_block22_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block22_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv4_block22_2_conv/Conv2D vs resnet101v2/conv4_block22_2_relu/Relu;resnet101v2/conv4_block22_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D;resnet101v2/conv4_block22_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 92,
+      "update_structure": {
+        "source_name": "resnet101v2/conv4_block23_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv4_block23_2_relu/Relu;resnet101v2/conv4_block23_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv4_block23_2_conv/Conv2D vs resnet101v2/conv4_block23_2_relu/Relu;resnet101v2/conv4_block23_2_bn/FusedBatchNormV3;resnet101v2/conv4_block23_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 94,
+      "update_structure": {
+        "source_name": "resnet101v2/conv5_block1_1_conv/Conv2D",
+        "target_name": "resnet101v2/conv5_block1_1_relu/Relu;resnet101v2/conv5_block1_1_bn/FusedBatchNormV3;resnet101v2/conv5_block3_2_conv/Conv2D;resnet101v2/conv5_block1_1_conv/Conv2D",
+        "source_structure": [
+          "BatchNormalization",
+          "Relu"
+        ],
+        "target_structure": [
+          "Mul",
+          "Add",
+          "Relu"
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 95,
+      "update_structure": {
+        "source_name": "resnet101v2/conv5_block1_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv5_block1_2_relu/Relu;resnet101v2/conv5_block1_2_bn/FusedBatchNormV3;resnet101v2/conv5_block3_2_conv/Conv2D;resnet101v2/conv5_block1_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv5_block1_2_conv/Conv2D vs resnet101v2/conv5_block1_2_relu/Relu;resnet101v2/conv5_block1_2_bn/FusedBatchNormV3;resnet101v2/conv5_block3_2_conv/Conv2D;resnet101v2/conv5_block1_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 99,
+      "update_structure": {
+        "source_name": "resnet101v2/conv5_block2_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv5_block2_2_relu/Relu;resnet101v2/conv5_block2_2_bn/FusedBatchNormV3;resnet101v2/conv5_block3_2_conv/Conv2D;resnet101v2/conv5_block2_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv5_block2_2_conv/Conv2D vs resnet101v2/conv5_block2_2_relu/Relu;resnet101v2/conv5_block2_2_bn/FusedBatchNormV3;resnet101v2/conv5_block3_2_conv/Conv2D;resnet101v2/conv5_block2_2_conv/Conv2D"
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_graph",
+      "op_type": "Conv",
+      "param_index": 102,
+      "update_structure": {
+        "source_name": "resnet101v2/conv5_block3_2_conv/Conv2D",
+        "target_name": "resnet101v2/conv5_block3_2_relu/Relu;resnet101v2/conv5_block3_2_bn/FusedBatchNormV3;resnet101v2/conv5_block3_2_conv/Conv2D",
+        "source_structure": [
+          "Relu"
+        ],
+        "target_structure": [
+          "Relu",
+          "Pad"
+        ]
+      }
+    },
+    {
+      "modification": "check_and_replace_hyperparameter",
+      "note": "Hyperparameter (pads) missing in target.resnet101v2/conv5_block3_2_conv/Conv2D vs resnet101v2/conv5_block3_2_relu/Relu;resnet101v2/conv5_block3_2_bn/FusedBatchNormV3;resnet101v2/conv5_block3_2_conv/Conv2D"
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 21: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 22: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 57: Parameter mismatch - index 1.",
+        "Layer 57: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  {
+    "execution_time": "4666.586640834808"
+  }
+]

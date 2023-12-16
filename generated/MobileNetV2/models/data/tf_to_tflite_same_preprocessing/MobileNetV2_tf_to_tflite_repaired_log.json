@@ -1,0 +1,753 @@
+[
+  [],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 1: Parameter mismatch - index 1.",
+        "Layer 1: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 3: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 4: Parameter mismatch - index 1.",
+        "Layer 4: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 5: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 6: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 7: Parameter mismatch - index 1.",
+        "Layer 7: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 9: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 10: Parameter mismatch - index 1.",
+        "Layer 10: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 12: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 13: Parameter mismatch - index 1.",
+        "Layer 13: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 15: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 16: Parameter mismatch - index 1.",
+        "Layer 16: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 17: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 18: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 19: Parameter mismatch - index 1.",
+        "Layer 19: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 20: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 21: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 23: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 24: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 25: Parameter mismatch - index 1.",
+        "Layer 25: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 26: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 27: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 29: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 30: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 32: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 33: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 34: Parameter mismatch - index 1.",
+        "Layer 34: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 35: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 38: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 40: Parameter mismatch - index 1.",
+        "Layer 40: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 42: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 43: Parameter mismatch - index 1.",
+        "Layer 43: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 45: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 46: Parameter mismatch - index 1.",
+        "Layer 46: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 47: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 48: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 49: Parameter mismatch - index 1.",
+        "Layer 49: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 50: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 51: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 52: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv",
+        "Add",
+        "Mul",
+        "Clip",
+        "GlobalAveragePool",
+        "Flatten",
+        "Gemm",
+        "AveragePool",
+        "Relu",
+        "MaxPool",
+        "Squeeze",
+        "Reshape",
+        "BatchNormalization",
+        "Flatten"
+      ],
+      "overview": [
+        "Layer 11: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 8: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 14: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 22: Parameter mismatch - index 1.",
+        "Layer 22: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 28: Parameter mismatch - index 1.",
+        "Layer 28: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [],
+  [],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 31: Parameter mismatch - index 1.",
+        "Layer 31: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [],
+  [],
+  [],
+  [],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 36: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 37: Parameter mismatch - index 1.",
+        "Layer 37: Parameter mismatch - index 2."
+      ]
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 39: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 41: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [
+    {
+      "modification": "replace_params",
+      "op_types": [
+        "Conv"
+      ],
+      "overview": [
+        "Layer 44: Parameter mismatch - index 1."
+      ]
+    }
+  ],
+  {
+    "execution_time": "434.16827511787415"
+  }
+]
