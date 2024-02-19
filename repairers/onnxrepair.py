@@ -62,7 +62,7 @@ class Repairer:
 
         # Try different orders.
         # FIND a rationale for the order. try partial order multiple to prove that it does not matter.
-        self.strategies = ["params[conv]"] #"symbolic_dimensions", "params[dequantize]", "params[conv]", "params[batch]", "params", "graph", "hyperparams", "flatten"
+        self.strategies = ["params[conv]", "params[batch]", "params"] #"symbolic_dimensions", "params[dequantize]", "params[conv]", "params[batch]", "params", "graph", "hyperparams", "flatten"
         self.adjust_weights = False,
         self.strategies_config = {
             "params[conv]" : {"op_types": ["Conv"], "input_param_indexes": [1, 2]},
@@ -533,8 +533,8 @@ class Repairer:
                 layers_no = 0
                 for node in source_onnx_model_nodes:
                     print(node.name)
-                    if node.name.startswith("Conv"):
-                        layers_no += 1
+                    #if node.name.startswith("Conv") or node.name.endswith("Conv2D"):
+                    layers_no += 1
 
                 print("Layers No: " + str(layers_no))
                 #analyzer.get_target_nodes_length(layer_config)
