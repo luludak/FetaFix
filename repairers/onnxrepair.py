@@ -1,7 +1,7 @@
 import onnx
 import onnxruntime as ort
 from os import listdir, remove, path, makedirs
-from os.path import isfile, isdir, join, exists
+from os.path import isfile, isdir, join, exists, normpath, basename
 import tvm
 import tvm.relay as relay
 import numpy as np
@@ -62,7 +62,7 @@ class Repairer:
 
         # Try different orders.
         # FIND a rationale for the order. try partial order multiple to prove that it does not matter.
-        self.strategies = ["graph", "hyperparams", "flatten"] #"symbolic_dimensions", "params[dequantize]", "params[conv]", "params[batch]", "params", 
+        self.strategies = ["params[conv]"] #"symbolic_dimensions", "params[dequantize]", "params[conv]", "params[batch]", "params", "graph", "hyperparams", "flatten"
         self.adjust_weights = False,
         self.strategies_config = {
             "params[conv]" : {"op_types": ["Conv"], "input_param_indexes": [1, 2]},
@@ -144,11 +144,12 @@ class Repairer:
     def build_tvm(self, onnx_path, output_model_path, input_shape):
         onnx_model = onnx.load(onnx_path)
         input_name = onnx_model.graph.input[0].name
-        # Input shape is preserved across models
+        # Input shape is preserved across models.
         shape_dict = {input_name: input_shape}
         mod, params = relay.frontend.from_onnx(onnx_model, shape_dict)
         target = tvm.target.Target(self.build["target"], host=self.build["host"])
         file_name = Path(onnx_path).stem
+        
         file_path = model_generator.generate_original_model(mod, target, params, output_model_path, file_name=file_name, opt_level=3)
         return file_path
 
@@ -174,13 +175,32 @@ class Repairer:
         print(source_onnx_path)
         print(target_onnx_path)
 
-        initial_target_onnx_path = target_onnx_path
+        initial_target_onnx_path = target_onnx_path  
+        folder_paths = [join(self.images_folder, f) for f in listdir(self.images_folder) \
+            if isdir(join(self.images_folder, f))]
 
-        images_paths = [join(self.images_folder, f) for f in listdir(self.images_folder) \
-            if isfile(join(self.images_folder, f))]
+        print(folder_paths)
+        images_paths_dir = {}
+
+        images_paths = []
+        if len(folder_paths) != 0:
+            
+            for folder in folder_paths:
+                for f in listdir(folder):
+                    images_paths.append(join(folder, f))
+                    images_paths_dir[f] = folder
+
+                # images_paths.extend([join(folder, f)  \
+                # if isfile(join(folder, f))])
+                
+        else:
+            images_paths = [join(self.images_folder, f) for f in listdir(self.images_folder) \
+                if isfile(join(self.images_folder, f))]
+        
+        print(len(images_paths))
 
         # Note: Use the target path, to avoid wrong caching for tests with the same base.
-        target_stem = path.basename(target_onnx_path).split('.')[0]
+        target_stem = basename(target_onnx_path).split('.')[0]
         source_dir = self.script_dir + "/" + configuration["models_out_relative"] + "/source"
         makedirs(source_dir, exist_ok=True)
         repair_file_path = join(source_dir, target_stem + "_source_run.json")
@@ -203,6 +223,24 @@ class Repairer:
             with open(repair_file_path, "r") as f:
                 source_object = json.loads(f.read())
             print("Run loaded successfully.")
+
+        # count_top1 = 0
+        # Calculate accuracy over ground truths.
+        # for img in source_object:
+
+        #     path_for_img = images_paths_dir[img]
+        #     last_dir = basename(normpath(path_for_img))
+        #     top_1_prediction = str(source_object[img][0])
+
+        #     # print(last_dir)
+        #     # print(top_1_prediction)
+
+        #     if last_dir == top_1_prediction:
+        #         count_top1 += 1
+        # print("Top-1 accuracy for source: " + str(count_top1/len(images_paths_dir)*100) + "%")
+        # InceptionV3:
+        # Top5: 92.84 over 93.9
+        # Top1: 75.32 over 78.1
         
         prev_target_onnx_path = target_onnx_path
         repair_log = {}
@@ -215,9 +253,16 @@ class Repairer:
 
         # TODO: Cache this, no need to rebuild each time.
         # Build TVM model for source.
-        source_tvm_path = self.build_tvm(source_onnx_path, configuration["models_out_relative"] + "/source/", \
-            configuration["source_onnx"]["input_shape"])
-
+        source_tvm_path = ""
+        if self.enable_layer_analysis:
+            try:
+                source_tvm_path = self.build_tvm(source_onnx_path, configuration["models_out_relative"] + "/source/", \
+                    configuration["source_onnx"]["input_shape"])
+                
+            except Exception as e:
+                print("WARNING: TVM build failed for source. Disabling layer analysis...")
+                self.enable_layer_analysis = False
+        
         # Execute Source
         source_models_data = configuration["source_onnx"]["models_data"]
         source_models_data["input_model_folder"] = source_tvm_path
@@ -310,16 +355,25 @@ class Repairer:
                     print ("Warning: dissimilar images length less than specified sample. Layer analysis will be inaccurate.")
                 dissimilar_images_under_test = dissimilar_images_full[:self.dissimilar_sample]
             
-            dissimilar_image_paths = [join(self.images_folder, d) for d in dissimilar_images_under_test]
+            dissimilar_image_paths = []
+            for d in dissimilar_images_under_test:
+                folder_path = images_paths_dir[d] if d in images_paths_dir else self.images_folder
+                dissimilar_image_paths.append(join(folder_path, d))
 
             # Consider top-K images the one as base for repair.
             dissimilar_image = dissimilar_images_under_test[0] if len(dissimilar_images_under_test) > 0 else full_evaluation["similar"][0]
-            dissimilar_image_path = dissimilar_image_paths[0] if len(dissimilar_image_paths) > 0 else join(self.images_folder, full_evaluation["similar"][0])
+            dissimilar_image_path = dissimilar_image_paths[0] if len(dissimilar_image_paths) > 0 else join(folder_path, full_evaluation["similar"][0])
 
             dissimilar_explored.append(dissimilar_image)
 
-            target_tvm_path = self.build_tvm(target_onnx_path, configuration["models_out_relative"] + "/target/", \
-                configuration["target_onnx"]["input_shape"])
+            target_tvm_path = ""
+            if self.enable_layer_analysis:
+                try:
+                    target_tvm_path = self.build_tvm(target_onnx_path, configuration["models_out_relative"] + "/target/", \
+                        configuration["target_onnx"]["input_shape"])
+                except Exception as e:
+                    print("WARNING: TVM build failed for targer. Disabling layer analysis...")
+                    self.enable_layer_analysis = False
 
             # For target, run all.
             target_models_data = configuration["target_onnx"]["models_data"]
@@ -409,8 +463,9 @@ class Repairer:
                     continue
 
             # If not enabled, this will run for just 1 similar/dissimilar image.
-            self.execute_tvm_with_debug(source_models_data, source_images_data, dissimilar_images_under_test)
-            self.execute_tvm_with_debug(target_models_data, target_images_data, dissimilar_images_under_test)
+            if self.enable_layer_analysis:
+                self.execute_tvm_with_debug(source_models_data, source_images_data, dissimilar_images_under_test)
+                self.execute_tvm_with_debug(target_models_data, target_images_data, dissimilar_images_under_test)
 
             layer_config = {
                 "layer_analysis_data": {
@@ -474,12 +529,20 @@ class Repairer:
             else:
                 print("Layer analysis disabled. Using original layer order.")
                 analyzer = Analyzer(self.script_dir, n_jobs=self.n_jobs)
-                layers_no = analyzer.get_target_nodes_length(layer_config)
+                source_onnx_model_nodes = onnx.load(source_onnx_path).graph.node
+                layers_no = 0
+                for node in source_onnx_model_nodes:
+                    print(node.name)
+                    if node.name.startswith("Conv"):
+                        layers_no += 1
+
+                print("Layers No: " + str(layers_no))
+                #analyzer.get_target_nodes_length(layer_config)
                 layers = [i for i in range(layers_no)]
 
 
             if self.enable_layer_analysis and len(dissimilar_images_full) >= self.dissimilar_sample:
-                print(total_layer_data)
+                # print(total_layer_data)
                 layers = sorted(total_layer_data, key=total_layer_data.get)
 
                 # Export total analysis outcome.
