@@ -10,7 +10,6 @@ import json
 from operator import attrgetter
 import gc
 
-
 import random
 from PIL import Image
 
@@ -124,7 +123,7 @@ class Repairer:
             img = model_preprocessor.preprocess(config["models_data"]["model_name"], img, True)
 
             input_name = model.graph.input[0].name
-            output = ort_sess.run(None, {input_name : img.astype(np.float32)})
+            output = ort_sess.run(None, {input_name : img.astype(np.float32)})    
 
             scores = softmax(output)
             if(len(scores) > 2):
@@ -172,14 +171,11 @@ class Repairer:
             # apply("flatten").\
 
     def repair(self, source_onnx_path, target_onnx_path, configuration):
-        print(source_onnx_path)
-        print(target_onnx_path)
 
         initial_target_onnx_path = target_onnx_path  
         folder_paths = [join(self.images_folder, f) for f in listdir(self.images_folder) \
             if isdir(join(self.images_folder, f))]
 
-        print(folder_paths)
         images_paths_dir = {}
 
         images_paths = []
@@ -189,15 +185,10 @@ class Repairer:
                 for f in listdir(folder):
                     images_paths.append(join(folder, f))
                     images_paths_dir[f] = folder
-
-                # images_paths.extend([join(folder, f)  \
-                # if isfile(join(folder, f))])
                 
         else:
             images_paths = [join(self.images_folder, f) for f in listdir(self.images_folder) \
                 if isfile(join(self.images_folder, f))]
-        
-        print(len(images_paths))
 
         # Note: Use the target path, to avoid wrong caching for tests with the same base.
         target_stem = basename(target_onnx_path).split('.')[0]
@@ -206,7 +197,6 @@ class Repairer:
         repair_file_path = join(source_dir, target_stem + "_source_run.json")
         full_repair_file_path = join(source_dir, target_stem + "_repaired.json")
         full_repair_log_file_path = join(source_dir, target_stem + "_repaired_log.json")
-        
         if not isfile(repair_file_path):
             print("Running dataset with source ONNX model...")
             source_object = self.execute_onnx_path(source_onnx_path, images_paths, configuration["source_onnx"])
@@ -223,24 +213,6 @@ class Repairer:
             with open(repair_file_path, "r") as f:
                 source_object = json.loads(f.read())
             print("Run loaded successfully.")
-
-        # count_top1 = 0
-        # Calculate accuracy over ground truths.
-        # for img in source_object:
-
-        #     path_for_img = images_paths_dir[img]
-        #     last_dir = basename(normpath(path_for_img))
-        #     top_1_prediction = str(source_object[img][0])
-
-        #     # print(last_dir)
-        #     # print(top_1_prediction)
-
-        #     if last_dir == top_1_prediction:
-        #         count_top1 += 1
-        # print("Top-1 accuracy for source: " + str(count_top1/len(images_paths_dir)*100) + "%")
-        # InceptionV3:
-        # Top5: 92.84 over 93.9
-        # Top1: 75.32 over 78.1
         
         prev_target_onnx_path = target_onnx_path
         repair_log = {}
@@ -304,7 +276,7 @@ class Repairer:
             curr_timer = time.time() - start_timer
             if  (dissimilarity_percentage == 0 and self.continue_repair_when_image_fixed == False) or \
                 (dissimilarity_percentage == 0 and self.continue_repair_when_image_fixed == True and same_dissimilarity_count == 2) or \
-                (same_dissimilarity_count == 2) or \
+                (same_dissimilarity_count == 4) or \
                 (curr_timer >= self.timer_limit):     
                 
                 print("Model repair complete! Path: " + target_onnx_path)
@@ -332,7 +304,7 @@ class Repairer:
                 # Writing json
                 with open(full_repair_file_path, "w") as outfile:
                     outfile.write(json_object)
-                    print ("Saved repaired output at " + full_repair_file_path) 
+                    print("Saved repaired output at " + full_repair_file_path) 
 
                 with open(full_repair_log_file_path, "w") as outfile:
                     outfile.write(json_log_object)
@@ -442,7 +414,7 @@ class Repairer:
 
                 # Repairs without requiring layer analysis.
                 modifier = StrategiesModifier(source_onnx_path, target_onnx_path).load()
-                #tmp_target_path = target_onnx_path.replace(".onnx", "_transpose.onnx")
+
                 # When converted from source to target and dimension has changed,
                 # a transposition layer is inserted to the model.
                 # We neutralize it in that case.
@@ -452,7 +424,7 @@ class Repairer:
                         dissimilar_image_path, configuration["target_onnx"])
 
                 print("Dissimilar Image Tau: " + str(dissimilar_evaluation["tau"]))
-                print(target_onnx_path)
+                # print(target_onnx_path)
                 if dissimilar_evaluation["tau"] > 0.98:
                     print ("Dimension repair fixed image!")
 
@@ -527,22 +499,19 @@ class Repairer:
                         layers = layers_range_list
                         break
             else:
+                # Utilize ONNX in order to infer layer number.
                 print("Layer analysis disabled. Using original layer order.")
                 analyzer = Analyzer(self.script_dir, n_jobs=self.n_jobs)
                 source_onnx_model_nodes = onnx.load(source_onnx_path).graph.node
                 layers_no = 0
                 for node in source_onnx_model_nodes:
-                    print(node.name)
-                    #if node.name.startswith("Conv") or node.name.endswith("Conv2D"):
                     layers_no += 1
 
                 print("Layers No: " + str(layers_no))
-                #analyzer.get_target_nodes_length(layer_config)
                 layers = [i for i in range(layers_no)]
 
 
             if self.enable_layer_analysis and len(dissimilar_images_full) >= self.dissimilar_sample:
-                # print(total_layer_data)
                 layers = sorted(total_layer_data, key=total_layer_data.get)
 
                 # Export total analysis outcome.
