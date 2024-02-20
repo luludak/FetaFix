@@ -11,7 +11,6 @@ from onnx import numpy_helper
 import numpy as np
 import json
 import traceback
-import onnx
 
 from os import path
 from os import listdir
@@ -104,7 +103,7 @@ datasets_info = config["datasets"]
 default_dataset_info = datasets_info[config["selected_dataset"]]
 
 images_path = script_dir + "/" + default_dataset_info["dataset_path_relative"]
-#image_names  = [f for f in listdir(images_path) if isfile(join(images_path, f))]
+image_names  = [f for f in listdir(images_path) if isfile(join(images_path, f))]
 
 evaluation_base_folder = "/mutations/ts_full/"
 evaluation_path = evaluation_base_folder + "/evaluate_mutation.txt"
@@ -169,8 +168,8 @@ for loop_count in range(config["runs_no"]):
         generated_path = script_dir + "/generated/"
 
         input_layer_shape = tuple(model_info["layers"]["input"])
-        #x = np.zeros(shape=input_layer_shape)
-        shape_dict = {input_name: input_layer_shape}
+        x = np.zeros(shape=input_layer_shape)
+        shape_dict = {input_name: x.shape}
 
         out_path = script_dir + paths_info["exec_out_relative"]
         dll_out_path = script_dir + paths_info["dll_exec_out_relative"]
