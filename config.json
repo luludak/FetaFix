@@ -29,6 +29,7 @@
             "model_name": "keras.applications.inception_v3",
             "image_dimension": [299, 299],
             "input": [1, 299, 299, 3],
+            "transpose_order": [0, 1, 2, 3],
             "input_name": "inputs:0",
             "output_name": "output",
             "output": [1, 1000],
