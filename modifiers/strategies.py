@@ -499,8 +499,10 @@ class StrategiesModifier:
         target_dim = self.target.graph.input[0].type.tensor_type.shape.dim
 
         for i in range(len(source_dim)):
-            target_dim[i].dim_value = source_dim[i].dim_value
-            target_dim[i].dim_param = source_dim[i].dim_param
+            if source_dim[i].dim_value == "":
+                target_dim[i].dim_param = source_dim[i].dim_param
+            else:
+                target_dim[i].dim_value = source_dim[i].dim_value
 
         self.log_modifications.append({
             "modification": "repair_input_dimension"
@@ -518,12 +520,14 @@ class StrategiesModifier:
         op_target_nodes = [node for node in target_nodes if node.op_type == "Transpose"]
         param_indexes = configuration["param_indexes"] if "param_indexes" in configuration \
              else range(len(op_target_nodes))
+        order = configuration["order"] if "order" in configuration else None
+
 
         for i in param_indexes:
             target_node = op_target_nodes[i]
 
             old_perm = [a for a in target_node.attribute if a.name == "perm"][0]
-            new_perm = [i for i in range(len(old_perm.ints))]
+            new_perm = new_perm = order if order is not None else [i for i in range(len(old_perm.ints))]
 
             # Neutralize transpose by setting input tensor
             # same as output from the layer.
