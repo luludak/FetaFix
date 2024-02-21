@@ -31,7 +31,32 @@ class Repairer:
         self.build = config["build"]
         self.script_dir = config["script_dir"]
         self.images_folder = config["images_folder"]
-        self.enable_layer_analysis = config["settings"]["enable_layer_analysis"] if "settings" in config else False
+        
+                # Default settings.
+        self.enable_transpose = False
+        self.enable_dim_fix = True
+        self.align_dimension = True
+        self.enable_model_repair = True
+        self.continue_repair_when_image_fixed = False
+        self.enable_layer_analysis = False
+
+        # Load options from config and override,
+        # else use default values, if not present.
+        if "settings" in config:
+            settings = config["settings"]
+            self.enable_transpose = settings["enable_transpose"] if "enable_transpose" in settings \
+                else self.enable_transpose
+            self.enable_dim_fix = settings["enable_dim_fix"] if "enable_dim_fix" in settings \
+                else self.enable_dim_fix 
+            self.align_dimension = settings["align_dimension"] if "align_dimension" in settings \
+                else self.align_dimension
+            self.enable_model_repair = settings["enable_model_repair"] if "enable_model_repair" in settings \
+                else self.enable_model_repair
+            self.continue_repair_when_image_fixed = settings["continue_repair_when_image_fixed"] \
+                if "continue_repair_when_image_fixed" in settings else self.continue_repair_when_image_fixed
+            self.enable_layer_analysis = settings["enable_layer_analysis"] if "enable_layer_analysis" in settings \
+                else self.enable_layer_analysis
+
         if not self.enable_layer_analysis:
             self.similar_sample = 1
             self.dissimilar_sample = 1
@@ -39,18 +64,12 @@ class Repairer:
             # TODO: set values here.
             self.similar_sample = 15
             self.dissimilar_sample = 15
+
         self.timer_limit = 7200
         self.no_of_layer_iterations = 3
         self.n_jobs = -1
         self.evaluation_generator = EvaluationGenerator()
         self.modification_log = []
-        # Note: this needs manual setup for now.
-        # The system will attempt a fix on Transpose in case of problematic input dimensions.
-        # If set false, the system just tries to fix the dimension without searching for a Transpose node.
-        self.enable_transpose = True
-        self.align_dimension = True
-        self.enable_model_repair = True
-        self.continue_repair_when_image_fixed = False
 
         # The order of strategies is determined by potential effect in the layers.
         # First, we ho with the one related to inputs - symbolic dimensions.
@@ -61,7 +80,7 @@ class Repairer:
 
         # Try different orders.
         # FIND a rationale for the order. try partial order multiple to prove that it does not matter.
-        self.strategies = ["params[conv]", "params[batch]", "params"] #"symbolic_dimensions", "params[dequantize]", "params[conv]", "params[batch]", "params", "graph", "hyperparams", "flatten"
+        self.strategies = ["params[conv]", "params[batch]", "params", "graph", "hyperparams", "flatten"] #"symbolic_dimensions", "params[dequantize]", "params[conv]", "params[batch]", "params", "graph", "hyperparams", "flatten"
         self.adjust_weights = False,
         self.strategies_config = {
             "params[conv]" : {"op_types": ["Conv"], "input_param_indexes": [1, 2]},
