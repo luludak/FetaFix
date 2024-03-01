@@ -425,7 +425,18 @@ class EvaluationGenerator:
         images_dissimilar = 0
 
         for image in target_images:
-            image_evaluation = self.evaluator.evaluate_objects(source_object[image], target_object[image])
+            source_img = source_object[image]
+	    target_img = target_object[image]
+
+            if (len(source_img) != len(target_img)):
+
+                if len(source_img) == 2 and source_img[0] == source_img[1]:
+                    source_img = source_img[0][0:len(target_img)]
+                    
+                elif len(target_img) == 2 and target_img[0] == target_img[1]:
+                    target_img = target_img[0][0:len(source_img)]
+
+            image_evaluation = self.evaluator.evaluate_objects(source_img, target_img)
             evaluation_object["images"][image] = {
                 "tau": image_evaluation["comparisons"]["kendalltau"]["tau"],
                 "p-value": image_evaluation["comparisons"]["kendalltau"]["p-value"],
