@@ -279,6 +279,11 @@ class Repairer:
         while (self.continue_repair_when_image_fixed == True or dissimilarity_percentage != 0):      
             
             print ("Running target ONNX model...")
+            if (len(source_object) != len(images_paths)):
+                raise Exception("Size mismatch between source run (" + str(len(source_object)) + ") " + \
+                "and target image paths (" + str(len(images_paths)) + ").\nCrashing to avoid having you wait without purpose :) " + \
+                "- Check cached and current dataset.")
+
             target_object = self.execute_onnx_path(target_onnx_path, images_paths, configuration["target_onnx"])
             full_evaluation = self.evaluate(source_object, target_object)
             dissimilarity_percentage = full_evaluation["percentage_dissimilar"]
