@@ -9,6 +9,8 @@ import time
 import json
 from operator import attrgetter
 import gc
+import traceback
+import copy
 
 import random
 from PIL import Image
@@ -31,10 +33,11 @@ class Repairer:
         self.build = config["build"]
         self.script_dir = config["script_dir"]
         self.images_folder = config["images_folder"]
-        
-                # Default settings.
-        self.enable_transpose = False
+
+        # Default settings.
+        self.enable_transpose = True
         self.enable_dim_fix = True
+        self.clear_multiple_outputs = True
         self.align_dimension = True
         self.enable_model_repair = True
         self.continue_repair_when_image_fixed = False
@@ -47,7 +50,9 @@ class Repairer:
             self.enable_transpose = settings["enable_transpose"] if "enable_transpose" in settings \
                 else self.enable_transpose
             self.enable_dim_fix = settings["enable_dim_fix"] if "enable_dim_fix" in settings \
-                else self.enable_dim_fix 
+                else self.enable_dim_fix
+            self.enable_transpose = settings["clear_multiple_outputs"] if "clear_multiple_outputs" in settings \
+                else self.clear_multiple_outputs
             self.align_dimension = settings["align_dimension"] if "align_dimension" in settings \
                 else self.align_dimension
             self.enable_model_repair = settings["enable_model_repair"] if "enable_model_repair" in settings \
@@ -57,6 +62,7 @@ class Repairer:
             self.enable_layer_analysis = settings["enable_layer_analysis"] if "enable_layer_analysis" in settings \
                 else self.enable_layer_analysis
 
+        
         if not self.enable_layer_analysis:
             self.similar_sample = 1
             self.dissimilar_sample = 1
@@ -70,6 +76,9 @@ class Repairer:
         self.n_jobs = -1
         self.evaluation_generator = EvaluationGenerator()
         self.modification_log = []
+        # Note: this needs manual setup for now.
+        # The system will attempt a fix on Transpose in case of problematic input dimensions.
+        # If set false, the system just tries to fix the dimension without searching for a Transpose node.
 
         # The order of strategies is determined by potential effect in the layers.
         # First, we ho with the one related to inputs - symbolic dimensions.
@@ -77,19 +86,37 @@ class Repairer:
         # Then we focus on graph differences across key layers.
         # Then we check flattening, with higher probability to happen around the end of graph.
         # Adjust weights if transpose is deprecated.
-
-        # Try different orders.
-        # FIND a rationale for the order. try partial order multiple to prove that it does not matter.
-        self.strategies = ["params[conv]", "params[batch]", "params", "graph", "hyperparams", "flatten"] #"symbolic_dimensions", "params[dequantize]", "params[conv]", "params[batch]", "params", "graph", "hyperparams", "flatten"
+        self.strategies = ["params", "params[conv]", "graph[add]", "graph", "hyperparams", "flatten"]
         self.adjust_weights = False,
-        self.strategies_config = {
+        self.default_strategies_config = {
+            "graph[conv]" : {"op_types": ["Conv"] },
+            "graph[add]" : {"op_types": ["Add"] },
+            "hyperparams[conv]" : {"op_types": ["Conv"] },
+            "params": {
+                "dynamic_input_param_indexes": {
+                    "Conv": [1, 2],
+                    "Mul": [1],
+                    "BatchNormalization": [1, 2, 3, 4],
+                    "default": [1]
+                }                    
+
+            },
+            "params[mul]" : {"op_types": ["Mul"], "input_param_indexes": [1]},
             "params[conv]" : {"op_types": ["Conv"], "input_param_indexes": [1, 2]},
             "params[batch]" : {"op_types": ["BatchNormalization"], "input_param_indexes": [1, 2, 3, 4]},
             "params[dequantize]": {"op_types": ["DequantizeLinear"], "input_param_indexes": [1, 2]}
-        }    
+        }
+
+        self.ranked_layers_strategy = ["params", "graph", "hyperparams[conv]"]    
 
     def evaluate(self, source_run_obj, target_run_obj):
         return self.evaluation_generator.generate_objects_comparison(source_run_obj, target_run_obj)
+
+    def execute_and_evaluate_single_model(self, onnx_model, run_obj, image_path, config, include_certainties=False):
+        image_obj = self.execute_onnx_model(onnx_model, [image_path], config, print_percentage=False, include_certainties=include_certainties)
+        image_name = list(image_obj.keys())[0]
+        return self.evaluate(run_obj, image_obj)["images"][image_name]
+
 
     def execute_and_evaluate_single(self, onnx_path, run_obj, image_path, config, include_certainties=False):
         image_obj = self.execute_onnx_path(onnx_path, [image_path], config, print_percentage=False, include_certainties=include_certainties)
@@ -105,9 +132,12 @@ class Repairer:
         # Execute and return for single image.
         return self.execute_onnx_path(onnx_path, [image_path], config, include_certainties)
 
-    def execute_onnx_path(self, onnx_path, images_paths, config, image_names=None, print_percentage=True, include_certainties=False):
+    def execute_onnx_path(self, onnx_path, images_paths, config, image_names=None, print_percentage=True, include_certainties=False): 
+        onnx_model = onnx.load(onnx_path)
+        return self.execute_onnx_model(onnx_model, images_paths, config, image_names, print_percentage, include_certainties)
+
+    def execute_onnx_model(self, onnx_model, images_paths, config, image_names=None, print_percentage=True, include_certainties=False):
         # Execute and return all data.
-        # images_paths = [f for f in listdir(self.images_folder) if isfile(join(self.images_folder, f))]
         self.preprocessing_data = {
             "input": config["input_shape"],
             "image_dimension": config["image_dimension"],
@@ -116,8 +146,8 @@ class Repairer:
         # Set library to None, so that the name is utilized for preprocessing selection.
         model_preprocessor = ModelPreprocessor(self.preprocessing_data)
 
-        model = onnx.load(onnx_path)
-        ort_sess = ort.InferenceSession(onnx_path, providers=['CPUExecutionProvider'])
+        model = onnx_model
+        ort_sess = ort.InferenceSession(model.SerializeToString(), providers=['CPUExecutionProvider'])
 
         output_data = {}
         count = 0
@@ -138,18 +168,27 @@ class Repairer:
                 img = img.convert("RGB")
 
             img = img.resize(config["image_dimension"])
-            model_name = Path(onnx_path).name
             img = model_preprocessor.preprocess(config["models_data"]["model_name"], img, True)
 
             input_name = model.graph.input[0].name
-            output = ort_sess.run(None, {input_name : img.astype(np.float32)})    
+            output = ort_sess.run(None, {input_name : img.astype(np.float32)})  
 
+            # Note: Enable to check for multiple node outputs.
+            #if len(output) > 1:
+                #print("Problem: model has more than one outputs! Selecting the first one...")
+            #    scores = softmax(output[0])
+            #else:
             scores = softmax(output)
             if(len(scores) > 2):
                 squeeze(scores, [0, 2])
+            # elif(len(scores) == 2 and (scores[0] == scores[1]).all()):
+            #     scores = scores[0]
 
             scores = np.squeeze(scores)
             ranks = np.argsort(scores)[::-1]
+            # In case of a double output.
+            if(len(ranks) == 2):
+                ranks = ranks[0]
             extracted_ranks = ranks[0:5]
 
             # We do not consider probabilities for now
@@ -176,6 +215,8 @@ class Repairer:
         objectsExecutor = ObjectsExecutor(models_data, images_data, self.build)
         return objectsExecutor.execute(self.remote, specific_images)
 
+    def get_layers_of_type(self, nodes, op_types):
+        return [i for i in range(len([node for node in nodes if node.op_type in op_types]))]
 
     def repair_full_model(self, source_path, target_path, layers_to_repair, output_path):
 
@@ -216,6 +257,7 @@ class Repairer:
         repair_file_path = join(source_dir, target_stem + "_source_run.json")
         full_repair_file_path = join(source_dir, target_stem + "_repaired.json")
         full_repair_log_file_path = join(source_dir, target_stem + "_repaired_log.json")
+        print("Checking for cached source run: " + repair_file_path)
         if not isfile(repair_file_path):
             print("Running dataset with source ONNX model...")
             source_object = self.execute_onnx_path(source_onnx_path, images_paths, configuration["source_onnx"])
@@ -232,8 +274,7 @@ class Repairer:
             with open(repair_file_path, "r") as f:
                 source_object = json.loads(f.read())
             print("Run loaded successfully.")
-        
-        prev_target_onnx_path = target_onnx_path
+
         repair_log = {}
         dissimilarity_percentage = None
         dissimilar_explored = []
@@ -274,15 +315,16 @@ class Repairer:
         adjust_weights = self.adjust_weights
 
         all_percentages = []
+        repaired_modifications = 0
         total_modifications = 0
 
         while (self.continue_repair_when_image_fixed == True or dissimilarity_percentage != 0):      
             
             print ("Running target ONNX model...")
             if (len(source_object) != len(images_paths)):
-                raise Exception("Size mismatch between source run (" + str(len(source_object)) + ") " + \
-                "and target image paths (" + str(len(images_paths)) + ").\nCrashing to avoid having you wait without purpose :) " + \
-                "- Check cached and current dataset.")
+                raise Exception("Size mismatch between source run (" + str(len(source_object)) + ") " +\
+                "and target image paths (" + str(len(images_paths)) + ").\nCrashing to avoid having you wait without purpose :) - " +\
+                "Check cached and current dataset.")
 
             target_object = self.execute_onnx_path(target_onnx_path, images_paths, configuration["target_onnx"])
             full_evaluation = self.evaluate(source_object, target_object)
@@ -299,11 +341,12 @@ class Repairer:
 
             curr_timer = time.time() - start_timer
             if  (dissimilarity_percentage == 0 and self.continue_repair_when_image_fixed == False) or \
-                (dissimilarity_percentage == 0 and self.continue_repair_when_image_fixed == True and same_dissimilarity_count == 2) or \
-                (same_dissimilarity_count == 4) or \
+                (dissimilarity_percentage == 0 and self.continue_repair_when_image_fixed == True and same_dissimilarity_count == 5) or \
+                (same_dissimilarity_count == 6) or \
                 (curr_timer >= self.timer_limit):     
                 
                 print("Model repair complete! Path: " + target_onnx_path)
+                print("Total repaired modifications: " + str(repaired_modifications))
                 print("Total modifications: " + str(total_modifications))
                 print(all_percentages)
                 print("---- Final dissimilarity percentage: " + str(dissimilarity_value_check) + "% ----")
@@ -320,8 +363,9 @@ class Repairer:
                 
                 json_object = json.dumps(repaired_object, indent=2)
                 self.modification_log.append({
-                    "total_modifications": str(total_modifications),
-                    "execution_time": str(curr_timer)
+                    "repaired_modifications": str(repaired_modifications),
+                    "execution_time": str(curr_timer),
+                    "percentages": all_percentages
                 })
                 json_log_object = json.dumps(self.modification_log, indent=2)
     
@@ -336,7 +380,7 @@ class Repairer:
                 break
 
             print("---- Current Dissimilarity Percentage -----: " + str(dissimilarity_percentage) + "%")
-
+            #return
             # Note: We do not reconsider already analyzed images.
             # Also, we explicitly exclude similar images.
             dissimilar_images_full = [key for key in full_evaluation["dissimilar"] if key not in dissimilar_explored]
@@ -358,8 +402,10 @@ class Repairer:
 
             # Consider top-K images the one as base for repair.
             dissimilar_image = dissimilar_images_under_test[0] if len(dissimilar_images_under_test) > 0 else full_evaluation["similar"][0]
-            dissimilar_image_path = dissimilar_image_paths[0] if len(dissimilar_image_paths) > 0 else join(folder_path, full_evaluation["similar"][0])
-
+            dissimilar_image_path = dissimilar_image_paths[0] if len(dissimilar_image_paths) > 0 else ""
+            if dissimilar_image_path == "":
+                print("No dissimilar images left. Skipping...")
+                continue
             dissimilar_explored.append(dissimilar_image)
 
             target_tvm_path = ""
@@ -368,7 +414,7 @@ class Repairer:
                     target_tvm_path = self.build_tvm(target_onnx_path, configuration["models_out_relative"] + "/target/", \
                         configuration["target_onnx"]["input_shape"])
                 except Exception as e:
-                    print("WARNING: TVM build failed for targer. Disabling layer analysis...")
+                    print("WARNING: TVM build failed for target. Disabling layer analysis...")
                     self.enable_layer_analysis = False
 
             # For target, run all.
@@ -407,42 +453,53 @@ class Repairer:
                 target_onnx_path = tmp_target_path
                 dissimilar_evaluation = self.execute_and_evaluate_single(target_onnx_path, source_object, \
                         dissimilar_image_path, configuration["target_onnx"])
+                total_modifications += modifier.get_overall_num_log_modifications()
                 
                 if dissimilar_evaluation["tau"] > 0.98:
                     print ("Weights adjustment fixed image!")
 
                     modifications_size = modifier.get_num_log_modifications()
-                    if (modifications_size != 0):
-                        total_modifications += modifications_size
-                        self.modification_log.append(modifier.get_log_modifications())
+                    repaired_modifications += modifications_size
+                    self.modification_log.append(modifier.get_log_modifications())
                     continue
                 
-            if align_dimension == True and configuration["target_onnx"]["input_shape"] != configuration["source_onnx"]["input_shape"]:
+            if self.enable_model_repair and align_dimension and configuration["target_onnx"]["input_shape"] != configuration["source_onnx"]["input_shape"]:
                 print("Warning: the dimensions of source model differ from the target. This might lead to different results.")
                 configuration["target_onnx"]["input_shape"] = configuration["source_onnx"]["input_shape"] 
                 configuration["target_onnx"]["image_dimension"] = configuration["source_onnx"]["image_dimension"]
-                
+
                 # Disable if run once.
                 align_dimension = False
                 # TODO: Refactor so that it works for any shape.
+                # Repairs without requiring layer analysis.
+                modifier = StrategiesModifier(source_onnx_path, target_onnx_path).load()
+                tmp_target_path = target_onnx_path
                 if self.enable_transpose == True:
                     print("Note: Repair will attempt transposition neutralization and fixing input dimension.")
                     strategy = "transpose"
-                    tmp_target_path = target_onnx_path.replace(".onnx", "_transpose.onnx")
-                    custom_config={}
-                else:
+                    tmp_target_path = tmp_target_path.replace(".onnx", "_transpose.onnx")
+                    if "transpose_order" in configuration["target_onnx"]:
+                        custom_config={"order": configuration["target_onnx"]["transpose_order"]}
+                    else:
+                        custom_config={}
+                    
+                        
+                    modifier.apply(strategy, custom_config=custom_config)
+                
+
+                if self.enable_dim_fix == True:
                     print("Note: Repair will attempt repairing input dimension.")
                     strategy = "repair_input_dimension"
-                    tmp_target_path = target_onnx_path.replace(".onnx", "_repair_input_dimension.onnx")
+                    tmp_target_path = tmp_target_path.replace(".onnx", "_repair_input_dimension.onnx")
                     custom_config={"param_indexes": [0]}
+                    modifier.apply(strategy, custom_config=custom_config)
 
-                # Repairs without requiring layer analysis.
-                modifier = StrategiesModifier(source_onnx_path, target_onnx_path).load()
 
                 # When converted from source to target and dimension has changed,
                 # a transposition layer is inserted to the model.
                 # We neutralize it in that case.
                 modifier.apply(strategy, custom_config=custom_config).save(tmp_target_path)
+                total_modifications += modifier.get_overall_num_log_modifications()
                 target_onnx_path = tmp_target_path
                 dissimilar_evaluation = self.execute_and_evaluate_single(target_onnx_path, source_object, \
                         dissimilar_image_path, configuration["target_onnx"])
@@ -453,9 +510,8 @@ class Repairer:
                     print ("Dimension repair fixed image!")
 
                     modifications_size = modifier.get_num_log_modifications()
-                    if (modifications_size != 0):
-                        total_modifications += modifications_size
-                        self.modification_log.append(modifier.get_log_modifications())
+                    repaired_modifications += modifications_size
+                    self.modification_log.append(modifier.get_log_modifications())
                     continue
 
             # If not enabled, this will run for just 1 similar/dissimilar image.
@@ -478,6 +534,11 @@ class Repairer:
             similar_images = full_evaluation["similar"].copy()
 
             layers_iterations = []
+            source_onnx_model_nodes = onnx.load(source_onnx_path).graph.node
+            
+            # self.default_strategies_config["params[mul]"]["param_indexes"] = all_layers
+            # self.default_strategies_config["params[batch]"]["param_indexes"] = all_layers
+            # self.default_strategies_config["params[dequantize]"]["param_indexes"] = all_layers          
 
             if self.enable_layer_analysis:
 
@@ -496,7 +557,6 @@ class Repairer:
                     self.execute_tvm_with_debug(target_models_data, target_images_data, similar_images_under_test)
                     
                     print("---- Current Dissimilarity Percentage -----: " + str(dissimilarity_percentage) + "%")
-
                     # Perform analysis to detect responsible layers.
                     analyzer = Analyzer(self.script_dir, n_jobs=self.n_jobs)
                     layers_no = analyzer.get_target_nodes_length(layer_config)
@@ -525,15 +585,7 @@ class Repairer:
             else:
                 # Utilize ONNX in order to infer layer number.
                 print("Layer analysis disabled. Using original layer order.")
-                analyzer = Analyzer(self.script_dir, n_jobs=self.n_jobs)
-                source_onnx_model_nodes = onnx.load(source_onnx_path).graph.node
-                layers_no = 0
-                for node in source_onnx_model_nodes:
-                    layers_no += 1
-
-                print("Layers No: " + str(layers_no))
-                layers = [i for i in range(layers_no)]
-
+                layers = self.get_layers_of_type(source_onnx_model_nodes, "Conv")
 
             if self.enable_layer_analysis and len(dissimilar_images_full) >= self.dissimilar_sample:
                 layers = sorted(total_layer_data, key=total_layer_data.get)
@@ -551,102 +603,165 @@ class Repairer:
             }
             
             has_fixed_hyperparams = False
-            best_target_path = target_onnx_path.replace(".onnx", "[.onnx")
+            best_target_path = target_onnx_path
                
             if not self.enable_model_repair:
 
                 print("Model repair is disabled. Exiting...")
                 break
 
+            modifier = None
+            
+            if self.clear_multiple_outputs:
+                modifier = StrategiesModifier(source_onnx_path, target_onnx_path).load()
+                tmp_target_path = target_onnx_path.replace(".onnx", "_clear_multiple_outputs.onnx")
+                modifier.apply("clear_multiple_outputs", custom_config={}).save(tmp_target_path)
+                target_onnx_path = tmp_target_path
+                dissimilar_evaluation = self.execute_and_evaluate_single(target_onnx_path, source_object, \
+                        dissimilar_image_path, configuration["target_onnx"])
+                total_modifications += modifier.get_overall_num_log_modifications()
+                
+                if dissimilar_evaluation["tau"] > 0.98:
+                    print ("Output clearance fixed image!")
+
+                    modifications_size = modifier.get_num_log_modifications()
+                    repaired_modifications += modifications_size
+                    self.modification_log.append(modifier.get_log_modifications())
+                    continue
+
 
             for strategy in self.strategies:
+                
+                print("Attempting strategy: " + strategy)
 
                 # Used to allow specifying crucial layer type.
                 strategy_type = strategy.split("[")[0]
-                strategy_config = self.strategies_config[strategy] if strategy in self.strategies_config else {}
+
+                # TODO: Refactor.
+                # Deepcopy, as you later edit strategy object.
+                strategy_config = copy.deepcopy(self.default_strategies_config[strategy] if strategy in self.default_strategies_config else {})
                 
-                for layer in layers:
+                if strategy not in self.default_strategies_config:
+                    layers_iter = layers
+                elif "param_indexes" not in self.default_strategies_config[strategy]:
+                    if strategy in self.ranked_layers_strategy:
+                        layers_iter = layers
+                    else:
+                        layers_iter = self.get_layers_of_type(source_onnx_model_nodes, self.default_strategies_config[strategy]["op_types"])  
+                else:
+                    layers_iter = self.default_strategies_config[strategy]["param_indexes"]
+                    print(layers_iter)
+
+                if modifier is not None:
+                    total_modifications += modifier.get_overall_num_log_modifications()
+                    repaired_modifications += modifier.get_num_log_modifications()
+                    self.modification_log.append(modifier.get_log_modifications())
+
+                modifier = StrategiesModifier(source_onnx_path, best_target_path).load()
+                
+                for layer in layers_iter:
+                    tmp_target_path = best_target_path.split("[")[0] + "[" + str(time.time()) + "].onnx"
+                
                     # Heavy memory handling and cleanup happens here, so we should call GC.
                     gc.collect()
-
-                    strategy_in_layer = strategy + "_" + str(layer)
-
-                    tmp_target_path = best_target_path.split("[")[0] + "[" + str(time.time()) + "].onnx"
-
-                    # Restore file name for first use.
-                    if best_target_path.endswith("[.onnx"):
-                        best_target_path = best_target_path.replace("[.onnx", ".onnx")
-
+                    
                     # Note for params:
                     # Since eventually all layers will be accessed,
                     # we keep params running per-layer, to have a better image of the
                     # repair process and the effect of each layer.
-                    # Therefore, we use them as a normal strategy.
-                    
-                    if (strategy != "flatten" and "batch" not in strategy):
-                        # Note: batch analysis will run for all batch layers in order of appearance.
-                        # The layer variable holds the Conv2D layers sorted.
-                        # Therefore this is skipped for batch elements, which are taken by default order.
-                        strategy_config["param_indexes"] = [layer]
+                    # Therefore, we use them as a normal strategy. 
+                    strategy_config["param_indexes"] = [layer]
+                    onnx_model_backup = copy.deepcopy(modifier.get_target())
+                    prev_num_log_mods = modifier.get_num_log_modifications()
                     
                     try:
+                        result = modifier.apply(strategy_type, custom_config=strategy_config)
+                        # modifier.save(tmp_target_path)
+                        # break
+                        if result == -1:
+                            break
 
-                        modifier = StrategiesModifier(source_onnx_path, best_target_path).load()
-                        modifier.apply(strategy_type, custom_config=strategy_config)
+                        # elif result == -2:
+                        #     continue
 
                         # There are many cases, where a graph change might be associated with a hyperaparameter
                         # to achieve proper dimension. For that reason, attempt a check on the node under test
                         # for necessary hyperparameter adjustments.
                         if strategy_type == "graph":
                             modifier.apply("hyperparams", custom_config=strategy_config)
-                        modifier.save(tmp_target_path)
+                            
                         
-                        # Restore later.
-                        modifications_size = modifier.get_num_log_modifications()
-                        if (modifications_size != 0):
-                            total_modifications += modifications_size
-                            self.modification_log.append(modifier.get_log_modifications())
-                        dissimilar_evaluation = self.execute_and_evaluate_single(tmp_target_path, source_object, \
+                        onnx_model = modifier.get_target()
+                        # save(tmp_target_path)
+                        
+                        # TODO: Restore later.
+                        # modifications_size = modifier.get_num_log_modifications()
+                        # if (modifications_size != 0):
+                        #     repaired_modifications += modifications_size
+                        #     self.modification_log.append(modifier.get_log_modifications())
+                        dissimilar_evaluation = self.execute_and_evaluate_single_model(onnx_model, source_object, \
                             dissimilar_image_path, configuration["target_onnx"])
 
                     except Exception as e:
                         print("Conversion failed. Rolling back...")
                         print(e)
+                        print(traceback.format_exc())
+                        
+                        if strategy_type == "graph":
+                            modifier.revert(onnx_model_backup, prev_num_log_mods)
+                        else:
+                            modifier.revert_last()
+
                         if exists(tmp_target_path):
                             remove(tmp_target_path)
                         continue
 
-                    print ("Dissimilar Image Tau, Layer:" + str(layer) + ": " + str(dissimilar_evaluation["tau"]))
-                    if (dissimilar_evaluation["tau"] >= 0.98 and not self.continue_repair_when_image_fixed):
-                        best_target_path = tmp_target_path
+                    # Name for next best path.
+                    #tmp_target_path = best_target_path.split("[")[0] + "[" + str(time.time()) + "].onnx"
 
+                    print ("Dissimilar Image Tau: " + str(dissimilar_evaluation["tau"]))
+                    if (dissimilar_evaluation["tau"] >= 0.98 and not self.continue_repair_when_image_fixed):
+                        
                         modifications_size = modifier.get_num_log_modifications()
                         if (modifications_size != 0):
-                            total_modifications += modifications_size
+                            repaired_modifications += modifications_size
                             self.modification_log.append(modifier.get_log_modifications())
+                            modifier.save(tmp_target_path)
+                            best_target_path = tmp_target_path
+                            
                         break
 
                     if (dissimilar_evaluation["tau"] >= full_evaluation["images"][dissimilar_image]["tau"]):
+                    #dissimilar_evaluation["tau"] > 0):
+
                         if (dissimilar_evaluation["tau"] > full_evaluation["images"][dissimilar_image]["tau"]):
                             print("Fix improved dissimilar image evaluation!")
-
+                            modifier.save(tmp_target_path)
                         
-                        # Place to restore
+                            # Place to restore
+                            if initial_target_onnx_path != best_target_path:
+                                remove(best_target_path)
 
-                        if initial_target_onnx_path != best_target_path:
-                            remove(best_target_path)
+                            best_target_path = tmp_target_path
                         
-                        full_evaluation["images"][dissimilar_image]["tau"] = dissimilar_evaluation["tau"]
-                        best_target_path = tmp_target_path
+                            full_evaluation["images"][dissimilar_image]["tau"] = dissimilar_evaluation["tau"]
+                        #best_target_path = tmp_target_path
                     else:
-                        remove(tmp_target_path)
+                        print("Change degraded performance. Reverting...")
+                        if strategy_type == "graph":
+                            modifier.revert(onnx_model_backup)
+                        else:
+                            modifier.revert_last()
+                    #     remove(tmp_target_path)
 
                 if (dissimilar_evaluation["tau"] >= full_evaluation["images"][dissimilar_image]["tau"]):
+                    tmp_target_path = best_target_path.split("[")[0] + "[" + str(time.time()) + "].onnx"
+                    modifier.save(tmp_target_path)
+
+                    best_target_path = tmp_target_path
                     target_onnx_path = best_target_path
 
                     if (dissimilar_evaluation["tau"] >= 0.98 and not self.continue_repair_when_image_fixed):
                         print("Image fixed!")
+                        total_modifications += modifier.get_overall_num_log_modifications()
                         break
-
-
-                

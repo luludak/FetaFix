@@ -8,31 +8,31 @@
     "layer_analysis_enabled": false,
     "model_repair_enabled": true,
     "model_repair_config": {
-        "source_rel_path": "/generated/InceptionV3/models/dl_conversions/InceptionV3_torch.onnx",
-        "target_rel_path": "/generated/InceptionV3/models/dl_conversions/InceptionV3_torch_to_keras_final.onnx",
-        "out_rel_path": "/generated/InceptionV3/models/dl_repair",
+        "source_rel_path": "/generated/MobileNet-2-7/models/dl_conversions/MobileNetV2_tf.onnx",
+        "target_rel_path": "/generated/MobileNet-2-7/models/dl_conversions/MobileNetV2_tf_to_tflite.onnx",
+        "out_rel_path": "/generated/MobileNet-2-7/models/dl_repair",
         "source_model_data": {
-            "name": "InceptionV3_torch.onnx",
-            "model_name": "torchvision_models.inception_v3",
-            "image_dimension": [299, 299],
-            "input": [1, 3, 299, 299],
-            "input_name": "inputs:0",
+            "name": "MobileNetV2_tf.onnx",
+            "model_name": "MobileNetV2_tf",
+            "image_dimension": [224, 224],
+            "input": [1, 224, 224, 3],
+            "input_name": "input:0",
             "output": [1, 1000],
-            "output_name": "output",
+            "output_name": "MobilenetV2/Predictions/Reshape_1:0",
             "library": "onnx",
             "preprocessing_enabled": true,
             "debug_enabled": true,
             "dtype": "float32"
         },
         "target_model_data": {
-            "name": "InceptionV3_torch_to_keras_final.onnx",
-            "model_name": "keras.applications.inception_v3",
-            "image_dimension": [299, 299],
-            "input": [1, 299, 299, 3],
+            "name": "MobileNetV2_tf_to_tflite.onnx",
+            "model_name": "MobileNetV2_tf",
+            "image_dimension": [224, 224],
+            "input": [1, 224, 224, 3],
             "transpose_order": [0, 1, 2, 3],
-            "input_name": "inputs:0",
-            "output_name": "output",
-            "output": [1, 1000],
+            "input_name": "input",
+            "output_name": " MobilenetV2/Predictions/Reshape_1",
+            "output": [1, 1001],
             "library": "onnx",
             "preprocessing_enabled": true,
             "debug_enabled": true,
@@ -45,7 +45,7 @@
             "dissimilar_sample": 10,
             "time_limit": 7200,
             "no_of_layer_iterations": 3
-         }
+        }
     },
     "models": [
         {

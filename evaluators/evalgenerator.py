@@ -132,8 +132,7 @@ class EvaluationGenerator:
             "total_images_dissimilar": total_images_dissimilar
         }
 
-        return full_object
-        
+        return full_object      
 
     def generate_devices_comparison(self, base_folder, replace_evaluated_suffix=False):
         devices = [d for d in listdir(base_folder) if isdir(join(base_folder, d))]
@@ -384,9 +383,7 @@ class EvaluationGenerator:
 
             with open(output_stats_time_file, 'w') as outfile:
                 print(json.dumps(total_exec_time_stats, indent=2, sort_keys=True), file=outfile)
-                outfile.close()
-            
-         
+                outfile.close()      
 
     def generate_folder_placeholder_comparison(self, model_names, folder1_path, folder2_path, output_path_file, label = "model"):
 
@@ -408,12 +405,12 @@ class EvaluationGenerator:
 
     # Generate tau comparison for images.
     def generate_objects_comparison(self, source_object, target_object):
+
         # Loop images
         # Run object comparison.
         # Count similar & Dissimilar, along with distances, in object.
         # Trick: not all source images should be at target, but if a target image
         # is not found in source, it will crash.
-
         source_images = source_object.keys()
         target_images = target_object.keys()
         evaluation_object = {
@@ -425,17 +422,17 @@ class EvaluationGenerator:
         images_dissimilar = 0
 
         for image in target_images:
+
             source_img = source_object[image]
-	    target_img = target_object[image]
+            target_img = target_object[image]
 
-            if (len(source_img) != len(target_img)):
-
-                if len(source_img) == 2 and source_img[0] == source_img[1]:
-                    source_img = source_img[0][0:len(target_img)]
+            if len(source_img) == 2 and source_img[0] == source_img[1]:
+                source_img = source_img[0][0:len(target_img)]
                     
-                elif len(target_img) == 2 and target_img[0] == target_img[1]:
-                    target_img = target_img[0][0:len(source_img)]
+            elif len(target_img) == 2 and target_img[0] == target_img[1]:
+                target_img = target_img[0][0:len(source_img)]
 
+            
             image_evaluation = self.evaluator.evaluate_objects(source_img, target_img)
             evaluation_object["images"][image] = {
                 "tau": image_evaluation["comparisons"]["kendalltau"]["tau"],
@@ -448,8 +445,9 @@ class EvaluationGenerator:
             else:
                 evaluation_object["dissimilar"].append(image)
                 images_dissimilar += 1
-                
-        if (len(source_images) != 0 and len(source_images) == len(target_images)):
+
+        # and len(source_images) == len(target_images)
+        if (len(source_images) != 0):
             evaluation_object["percentage_similar"] = (len(evaluation_object["similar"])/len(target_images)) * 100
             evaluation_object["percentage_dissimilar"] = (len(evaluation_object["dissimilar"])/len(target_images)) * 100
         return evaluation_object
@@ -511,8 +509,7 @@ class EvaluationGenerator:
         diff_labels = {}
         orig_exec_times = []
         mut_exec_times = []
-        
-        
+         
         for image_txt in image_txt_names:
 
             original_img_file_path = join(original_model_path, image_txt)
@@ -521,7 +518,6 @@ class EvaluationGenerator:
             if not path.isfile(mutation_img_file_path):
                 print("- Warning: File " + mutation_img_file_path + " does not exist in model folder. Skipping...")
                 continue
-
 
             image_name_extracted = image_txt.split('.')[0]
             evaluated = self.evaluator.evaluate(original_img_file_path, mutation_img_file_path)
@@ -608,4 +604,3 @@ class EvaluationGenerator:
                 outfile.close()
 
         return evaluation_data_obj
-
