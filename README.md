@@ -1,6 +1,7 @@
 # FetaFix
 
-FetaFix is a comprehensive suite for compiling, optimizing, executing and analyzing pretrained DNNs under different computational environment settings. FetaFix primarily supports:
+FetaFix is a comprehensive suite for compiling, optimizing, executing and analyzing pretrained DNNs under different computational environment settings.
+FetaFix primarily supports:
 
 - Automatic Fault Localization across ONNX model correspondents (Source and Target) between a DL framework conversion.
 - Automatic Fault Repair of the Target model, if behavior is deviating from Source, by repairing model input, graph, parameters and hyperparameters.
