@@ -1,6 +1,6 @@
-# ConRepAIr
+# FetaFix
 
-ConRepAIr is a comprehensive suite for compiling, optimizing, executing and analyzing pretrained DNNs under different computational environment settings. ConRepAIr primarily supports:
+FetaFix is a comprehensive suite for compiling, optimizing, executing and analyzing pretrained DNNs under different computational environment settings. FetaFix primarily supports:
 
 - Automatic Fault Localization across ONNX model correspondents (Source and Target) between a DL framework conversion.
 - Automatic Fault Repair of the Target model, if behavior is deviating from Source, by repairing model input, graph, parameters and hyperparameters.
@@ -76,7 +76,7 @@ The system will generate the models in the folder defined in config.json, along 
 In total, the framework will generate the models compiled on TVM, utilizing the `opt=2` optimization setting, to be executed using `OpenCL` for hardware acceleration, for `TFLite`, `Keras` and `PyTorch`.
 
 ##### Convert:
-ConRepAIr supports conversions of DL frameworks, for Keras, PyTorch, TF, TFlite. This can be enabled by setting <source>_to_<target> model in `dll_libraries` configuration of a model, in `config.json` file. For Keras, add `keras_library` as Source. You can use the provided sample `config.json` in order to perform your conversions. Just remove `noop_` prefix from the conversion title and enable the model conversions by setting `"skip_analysis": false`, and `"build_dlls": true` in the respective model settings. Note: For TF/TFLite conversions, you will need to download the `.pb/.tflite` files from the official TF repo, as described above. PyTorch and Keras use the native implementations provided along the libraries, but you need to install them as project dependencies.
+FetaFix supports conversions of DL frameworks, for Keras, PyTorch, TF, TFlite. This can be enabled by setting <source>_to_<target> model in `dll_libraries` configuration of a model, in `config.json` file. For Keras, add `keras_library` as Source. You can use the provided sample `config.json` in order to perform your conversions. Just remove `noop_` prefix from the conversion title and enable the model conversions by setting `"skip_analysis": false`, and `"build_dlls": true` in the respective model settings. Note: For TF/TFLite conversions, you will need to download the `.pb/.tflite` files from the official TF repo, as described above. PyTorch and Keras use the native implementations provided along the libraries, but you need to install them as project dependencies.
 
 
 #### Execute:
