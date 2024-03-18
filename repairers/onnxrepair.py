@@ -482,10 +482,8 @@ class Repairer:
                         custom_config={"order": configuration["target_onnx"]["transpose_order"]}
                     else:
                         custom_config={}
-                    
-                        
-                    modifier.apply(strategy, custom_config=custom_config)
-                
+                      
+                    modifier.apply(strategy, custom_config=custom_config)               
 
                 if self.enable_dim_fix == True:
                     print("Note: Repair will attempt repairing input dimension.")
@@ -629,7 +627,6 @@ class Repairer:
                     self.modification_log.append(modifier.get_log_modifications())
                     continue
 
-
             for strategy in self.strategies:
                 
                 print("Attempting strategy: " + strategy)
@@ -641,21 +638,19 @@ class Repairer:
                 # Deepcopy, as you later edit strategy object.
                 strategy_config = copy.deepcopy(self.default_strategies_config[strategy] if strategy in self.default_strategies_config else {})
                 
+                source_nodes_arr = [n for n in source_onnx_model_nodes]
                 if strategy not in self.default_strategies_config:
-                    layers_iter = layers
+                    layers_iter = [i for i in range(len(source_nodes_arr))]
+                #     layers_iter = source_nodes
                 elif "param_indexes" not in self.default_strategies_config[strategy]:
                     if strategy in self.ranked_layers_strategy:
                         layers_iter = layers
+                    elif "dynamic_input_param_indexes" in self.default_strategies_config[strategy]:
+                        layers_iter = [i for i in range(len(source_nodes_arr))]
                     else:
                         layers_iter = self.get_layers_of_type(source_onnx_model_nodes, self.default_strategies_config[strategy]["op_types"])  
                 else:
                     layers_iter = self.default_strategies_config[strategy]["param_indexes"]
-                    print(layers_iter)
-
-                if modifier is not None:
-                    total_modifications += modifier.get_overall_num_log_modifications()
-                    repaired_modifications += modifier.get_num_log_modifications()
-                    self.modification_log.append(modifier.get_log_modifications())
 
                 modifier = StrategiesModifier(source_onnx_path, best_target_path).load()
                 
@@ -676,13 +671,8 @@ class Repairer:
                     
                     try:
                         result = modifier.apply(strategy_type, custom_config=strategy_config)
-                        # modifier.save(tmp_target_path)
-                        # break
                         if result == -1:
                             break
-
-                        # elif result == -2:
-                        #     continue
 
                         # There are many cases, where a graph change might be associated with a hyperaparameter
                         # to achieve proper dimension. For that reason, attempt a check on the node under test
