@@ -94,7 +94,7 @@ Set the global setting to `"model_repair_enabled": true`. Also, adjust the `mode
 
 ## Quick Demo:
 For a quick demo, follow the installation instructions above in order to install TVM and the rest of dependencies.
-Following this, download `MobileNetV2` v1.0 from the official TFLite repository, extract the `.pb` frozen graph file and rename it to `mobilenet_v2.pb`.
+Following this, download `MobileNetV2` v1.0 from the official TensorFlow repository, extract the `.pb` frozen graph file and rename it to `mobilenet_v2.pb`.
 
 The current configuration is setup in order to automatically build `MobileNetV2` model in `TF` and convert it to `TFLite`. Following model build, it will perform fault localization and repair analysis, against the `Test` dataset. It will detect a `10%` discrepancy across model versions, which should repair completely after 1 cycle consisting 9 model modifications. Following repair, it should output the repaired model in ONNX format, along with some metadata files about the repair.
 
