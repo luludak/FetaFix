@@ -1,18 +1,20 @@
-# FetaFix
+# ConRepAIr
 
-FetaFix is a comprehensive suite for compiling, optimizing, executing and analyzing pretrained DNNs under different computational environment settings.
-FetaFix primarily supports:
+ConRepAIr is a comprehensive suite for compiling, optimizing, executing and analyzing pretrained DNNs under different computational environment settings. The system is based on DeltaNN by Louloudakis et al.: [Project](https://github.com/luludak/DeltaNN) | [Paper] (https://arxiv.org/abs/2306.06208)
+
+
+ConRepAIr supports:
 
 - Automatic Fault Localization across ONNX model correspondents (Source and Target) between a DL framework conversion.
 - Automatic Fault Repair of the Target model, if behavior is deviating from Source, by repairing model input, graph, parameters and hyperparameters.
 
-Also, it can:
+Utilizing (and integrating) the following features from DeltaNN:
 - Build of Neural Networks using different backend DL Frameworks.
 - Build of DNNs under different optimization settings.
 - Build of DNNs using different GPU backends (CUDA, OpenCL, etc).
-- Convert oDNNs from one backend framework to another (currently supporting all conversions across Keras, PyTorch, TF, TFlite).
-- Execute DNNs in different hardware acceleration environments.
-- Analyze the results in a bundled and automated manner.
+- Conversion of DNNs from one backend framework to another (currently supporting all conversions across Keras, PyTorch, TF, TFlite).
+- Executing DNNs in different hardware acceleration environments.
+- Analyzing the results in a bundled and automated manner.
 
 The suite is based on [Apache TVM](https://tvm.apache.org/) for its capabilities.
 
@@ -77,7 +79,7 @@ The system will generate the models in the folder defined in config.json, along 
 In total, the framework will generate the models compiled on TVM, utilizing the `opt=2` optimization setting, to be executed using `OpenCL` for hardware acceleration, for `TFLite`, `Keras` and `PyTorch`.
 
 ##### Convert:
-FetaFix supports conversions of DL frameworks, for Keras, PyTorch, TF, TFlite. This can be enabled by setting <source>_to_<target> model in `dll_libraries` configuration of a model, in `config.json` file. For Keras, add `keras_library` as Source. You can use the provided sample `config.json` in order to perform your conversions. Just remove `noop_` prefix from the conversion title and enable the model conversions by setting `"skip_analysis": false`, and `"build_dlls": true` in the respective model settings. Note: For TF/TFLite conversions, you will need to download the `.pb/.tflite` files from the official TF repo, as described above. PyTorch and Keras use the native implementations provided along the libraries, but you need to install them as project dependencies.
+ConRepAIr supports conversions of DL frameworks, for Keras, PyTorch, TF, TFlite. This can be enabled by setting <source>_to_<target> model in `dll_libraries` configuration of a model, in `config.json` file. For Keras, add `keras_library` as Source. You can use the provided sample `config.json` in order to perform your conversions. Just remove `noop_` prefix from the conversion title and enable the model conversions by setting `"skip_analysis": false`, and `"build_dlls": true` in the respective model settings. Note: For TF/TFLite conversions, you will need to download the `.pb/.tflite` files from the official TF repo, as described above. PyTorch and Keras use the native implementations provided along the libraries, but you need to install them as project dependencies.
 
 
 #### Execute:
@@ -89,6 +91,23 @@ Console will indicate the status of the running model and update accordingly.
 
 #### Fault Localization/Repair:
 Set the global setting to `"model_repair_enabled": true`. Also, adjust the `model_repair_config` object to your needs, setting paths, options and settings for `Source` and `Target` models.
+
+
+### CLOC:
+ConRepAIr was built on top of DeltaNN, but consists of 2090 LOC for its Fault Localization & Repair capabilities. In total:
+
+```
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+Python                          43           1713            708           5487
+JSON                             1              3              0            893
+Markdown                         1             34              0             84
+-------------------------------------------------------------------------------
+SUM:                            45           1750            708           6464
+-------------------------------------------------------------------------------
+
+```
 
 ### Raw Results Data:
 Accompanying our contribution, we provide raw data for our experiments.

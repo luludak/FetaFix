@@ -116,7 +116,7 @@ opt_level = "opt" + str(config["opt_level"])
 print ("Preprocessing is " + ("enabled." if config["preprocessing_enabled"] else "disabled."))
 
 #------------------------- Localization Analysis -------------------------
-if(config["model_repair_enabled"]):
+if(config["model_repair_config"]["settings"]["enable_model_repair"]):
     build["error_base_folder"] = join(script_dir, "error_log", "repair")
 
     source_path = script_dir + config["model_repair_config"]["source_rel_path"]
@@ -131,8 +131,10 @@ if(config["model_repair_enabled"]):
         "images_folder": images_path,
         "build": build,
         "script_dir": script_dir,
+        "settings": config["model_repair_config"]["settings"]
     })
 
+    print(config["model_repair_config"]["settings"])
     repairer.repair(source_path, target_path, {
         "source_onnx": {
             "input_shape": source_model_data["input"],
@@ -142,10 +144,10 @@ if(config["model_repair_enabled"]):
         "target_onnx": {
             "input_shape": target_model_data["input"],
             "image_dimension": target_model_data["image_dimension"],
+            "transpose_order": target_model_data["transpose_order"] if "transpose_order" in target_model_data else None,
             "models_data" : target_model_data
         },
-        "models_out_relative": config["model_repair_config"]["out_rel_path"],
-        "settings": config["model_repair_config"]["settings"]
+        "models_out_relative": config["model_repair_config"]["out_rel_path"]
     })
 
 #------------------------- Models Processing -------------------------

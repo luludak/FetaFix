@@ -6,11 +6,10 @@
     "runs_no": 1,
     "initial_analysis_enabled": false,
     "layer_analysis_enabled": false,
-    "model_repair_enabled": true,
     "model_repair_config": {
-        "source_rel_path": "/generated/MobileNet-2-7/models/dl_conversions/MobileNetV2_tf.onnx",
-        "target_rel_path": "/generated/MobileNet-2-7/models/dl_conversions/MobileNetV2_tf_to_tflite.onnx",
-        "out_rel_path": "/generated/MobileNet-2-7/models/dl_repair",
+        "source_rel_path": "/generated/MobileNetV2/models/dl_conversions/MobileNetV2_tf.onnx",
+        "target_rel_path": "/generated/MobileNetV2/models/dl_conversions/MobileNetV2_tf_to_tflite.onnx",
+        "out_rel_path": "/generated/MobileNetV2/models/dl_repair",
         "source_model_data": {
             "name": "MobileNetV2_tf.onnx",
             "model_name": "MobileNetV2_tf",
@@ -85,15 +84,15 @@
             },
             "ranks_url": "...",
             "paths": {
-                "models_out_relative": "/generated/MobileNet-2-7/models/dl_conversions",
-                "dll_models_out_relative": "/generated/MobileNet-2-7/models/dl_conversions/",
-                "exec_out_relative": "/generated/MobileNet-2-7/dl_conversions/",
-                "dll_exec_out_relative": "/generated/MobileNet-2-7/dl_conversions/",
-                "evaluation_out_relative": "/generated/MobileNet-2-7/dl_conversions/opt2/"
+                "models_out_relative": "/generated/MobileNetV2/models/dl_conversions",
+                "dll_models_out_relative": "/generated/MobileNetV2/models/dl_conversions/",
+                "exec_out_relative": "/generated/MobileNetV2/dl_conversions/",
+                "dll_exec_out_relative": "/generated/MobileNetV2/dl_conversions/",
+                "evaluation_out_relative": "/generated/MobileNetV2/dl_conversions/opt2/"
             },
             "dll_libraries": [
                 {
-                    "library": "noop_tf",
+                    "library": "tf",
                     "load": "local",
                     "opset": 9,
                     "dependency": "mobilenet_v2.pb",
@@ -226,7 +225,7 @@
                     ]
                 },
                 {
-                    "library": "noop_tf_to_tflite",
+                    "library": "tf_to_tflite",
                     "load": "local",
                     "opset": 9,
                     "dependency": "mobilenet_v2.pb",

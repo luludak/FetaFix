@@ -245,7 +245,7 @@ class StrategiesModifier:
                 return -1
 
             source_node = source_nodes[index]
-            print("Checking node : " + str(i) + ", type: " + source_node.op_type)
+            print("Checking node : " + str(index) + ", type: " + source_node.op_type)
             target_node = self.find_matching_target_node(source_node) # , cache=matching_target_cache
             
             if target_node is None:
@@ -283,7 +283,7 @@ class StrategiesModifier:
                             self.target.graph.initializer[idx].CopyFrom(new_tensor)
 
                         log_overview.append(
-                            "Layer " + str(i) + ": Parameter mismatch - index " + str(param_index) + "."
+                            "Layer " + str(index) + ": Parameter mismatch - index " + str(param_index) + "."
                         )
                         self.num_log_modifications += 1
 
