@@ -115,41 +115,6 @@ model_names = []
 opt_level = "opt" + str(config["opt_level"])
 print ("Preprocessing is " + ("enabled." if config["preprocessing_enabled"] else "disabled."))
 
-#------------------------- Localization Analysis -------------------------
-if(config["model_repair_config"]["settings"]["enable_model_repair"]):
-    build["error_base_folder"] = join(script_dir, "error_log", "repair")
-
-    source_path = script_dir + config["model_repair_config"]["source_rel_path"]
-    target_path = script_dir + config["model_repair_config"]["target_rel_path"]
-
-    source_model_data = config["model_repair_config"]["source_model_data"]
-    target_model_data = config["model_repair_config"]["target_model_data"]
-    
-
-    repairer = Repairer({
-        "remote": remote,
-        "images_folder": images_path,
-        "build": build,
-        "script_dir": script_dir,
-        "settings": config["model_repair_config"]["settings"]
-    })
-
-    print(config["model_repair_config"]["settings"])
-    repairer.repair(source_path, target_path, {
-        "source_onnx": {
-            "input_shape": source_model_data["input"],
-            "image_dimension": source_model_data["image_dimension"],
-            "models_data": source_model_data
-        },
-        "target_onnx": {
-            "input_shape": target_model_data["input"],
-            "image_dimension": target_model_data["image_dimension"],
-            "transpose_order": target_model_data["transpose_order"] if "transpose_order" in target_model_data else None,
-            "models_data" : target_model_data
-        },
-        "models_out_relative": config["model_repair_config"]["out_rel_path"]
-    })
-
 #------------------------- Models Processing -------------------------
 
 for loop_count in range(config["runs_no"]):
@@ -383,3 +348,38 @@ for loop_count in range(config["runs_no"]):
                 eg_mts.generate_base_folder_comparison(generated_models_prettified, join(model_base, device_folder), "mutations")
                 eg_mts.generate_devices_comparison(model_base, replace_evaluated_suffix=True)
                 eg_mts.get_time_stats_folder(join(model_base, device_folder))
+
+#------------------------- Localization Analysis -------------------------
+if(config["model_repair_config"]["settings"]["enable_model_repair"]):
+    build["error_base_folder"] = join(script_dir, "error_log", "repair")
+
+    source_path = script_dir + config["model_repair_config"]["source_rel_path"]
+    target_path = script_dir + config["model_repair_config"]["target_rel_path"]
+
+    source_model_data = config["model_repair_config"]["source_model_data"]
+    target_model_data = config["model_repair_config"]["target_model_data"]
+    
+
+    repairer = Repairer({
+        "remote": remote,
+        "images_folder": images_path,
+        "build": build,
+        "script_dir": script_dir,
+        "settings": config["model_repair_config"]["settings"]
+    })
+
+    print(config["model_repair_config"]["settings"])
+    repairer.repair(source_path, target_path, {
+        "source_onnx": {
+            "input_shape": source_model_data["input"],
+            "image_dimension": source_model_data["image_dimension"],
+            "models_data": source_model_data
+        },
+        "target_onnx": {
+            "input_shape": target_model_data["input"],
+            "image_dimension": target_model_data["image_dimension"],
+            "transpose_order": target_model_data["transpose_order"] if "transpose_order" in target_model_data else None,
+            "models_data" : target_model_data
+        },
+        "models_out_relative": config["model_repair_config"]["out_rel_path"]
+    })

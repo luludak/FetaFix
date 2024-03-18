@@ -1,9 +1,9 @@
-# ConRepAIr
+# FetaFix
 
-ConRepAIr is a comprehensive suite for compiling, optimizing, executing and analyzing pretrained DNNs under different computational environment settings. The system is based on DeltaNN by Louloudakis et al.: [Project](https://github.com/luludak/DeltaNN) | [Paper] (https://arxiv.org/abs/2306.06208)
+FetaFix is a comprehensive suite for compiling, optimizing, executing and analyzing pretrained DNNs under different computational environment settings. The system is based on DeltaNN by Louloudakis et al.: [Project](https://github.com/luludak/DeltaNN) | [Paper] (https://arxiv.org/abs/2306.06208)
 
 
-ConRepAIr supports:
+FetaFix supports:
 
 - Automatic Fault Localization across ONNX model correspondents (Source and Target) between a DL framework conversion.
 - Automatic Fault Repair of the Target model, if behavior is deviating from Source, by repairing model input, graph, parameters and hyperparameters.
@@ -25,7 +25,7 @@ We also use `Python v3.8.5` and `Pip` as the package installer.
 
 In addition, the system requires a number of pip packages, which you can find in the requirements.txt file.
 
-## Instructions:
+## Instructions
 
 1. Install Python and Pip on your system.
 - Python comes with linux distros usually, but this is not always the case for Pip. You can install it by running "sudo apt install python3-pip"
@@ -72,39 +72,42 @@ Once you set up the framework, you can execute it by doing:
 
 The example case will build, run and execute evaluation for `MobileNetV2`, in `TFLite` DL Framework. The evaluation will give an empty devices file, as no simultaneous library runs are performed, and there are no other runs to additional devices.
 
-#### Build: 
+#### Build
 The system will generate the models in the folder defined in config.json, along with their generated Host/Kernel code, but also their TVM Relay IR code:
 `<script_folder>/generated/MobileNet-2-7/models`
 
 In total, the framework will generate the models compiled on TVM, utilizing the `opt=2` optimization setting, to be executed using `OpenCL` for hardware acceleration, for `TFLite`, `Keras` and `PyTorch`.
 
-##### Convert:
-ConRepAIr supports conversions of DL frameworks, for Keras, PyTorch, TF, TFlite. This can be enabled by setting <source>_to_<target> model in `dll_libraries` configuration of a model, in `config.json` file. For Keras, add `keras_library` as Source. You can use the provided sample `config.json` in order to perform your conversions. Just remove `noop_` prefix from the conversion title and enable the model conversions by setting `"skip_analysis": false`, and `"build_dlls": true` in the respective model settings. Note: For TF/TFLite conversions, you will need to download the `.pb/.tflite` files from the official TF repo, as described above. PyTorch and Keras use the native implementations provided along the libraries, but you need to install them as project dependencies.
+##### Convert
+FetaFix supports conversions of DL frameworks, for Keras, PyTorch, TF, TFlite. This can be enabled by setting <source>_to_<target> model in `dll_libraries` configuration of a model, in `config.json` file. For Keras, add `keras_library` as Source. You can use the provided sample `config.json` in order to perform your conversions. Just remove `noop_` prefix from the conversion title and enable the model conversions by setting `"skip_analysis": false`, and `"build_dlls": true` in the respective model settings. Note: For TF/TFLite conversions, you will need to download the `.pb/.tflite` files from the official TF repo, as described above. PyTorch and Keras use the native implementations provided along the libraries, but you need to install them as project dependencies.
 
 
-#### Execute:
+#### Execute
 You can perform inference using the system, by enabling `"execute_dlls": false`. Set global setting `"backend": "tvm"` to run it via TVM, or `"backend": "library"` to run it using the respective library. Libraries supported: Keras, PyTorch, TensorFlow/TFLite, ONNX (Using ONNX Runtime).
 
 ConvRepAIr will generate 1 file per-input, containing the top-5 predictions, along with the execution time per-prediction at the bottom. In addition, you will find an execution_log.txt file in the aforementioned fonder, containing info about the run.
 
 Console will indicate the status of the running model and update accordingly.
 
-#### Fault Localization/Repair:
+#### Fault Localization/Repair
 Set the global setting to `"model_repair_enabled": true`. Also, adjust the `model_repair_config` object to your needs, setting paths, options and settings for `Source` and `Target` models.
 
+## Quick Demo:
+Following proper installation, the current configuration is setup in order to automatically build `MobileNetV2` model in `TF` and convert it to `TFLite`. Following model build, it will perform fault localization and repair analysis, against the `Test` dataset. It will detect a `10%` discrepancy across model versions, which should repair completely after 1 cycle consisting 9 model modifications. Following repair, it should output the repaired model in ONNX format, along with some metadata files about the repair.
 
-### CLOC:
-ConRepAIr was built on top of DeltaNN, but consists of 2090 LOC for its Fault Localization & Repair capabilities. In total:
+## CLOC:
+FetaFix was built on top of DeltaNN, but consists of over 2K LOC for its Fault Localization & Repair capabilities.
+In total:
 
 ```
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
-Python                          43           1713            708           5487
+Python                          30           1544            638           4569
 JSON                             1              3              0            893
 Markdown                         1             34              0             84
 -------------------------------------------------------------------------------
-SUM:                            45           1750            708           6464
+SUM:                            32           1581            638           5546
 -------------------------------------------------------------------------------
 
 ```
@@ -113,6 +116,6 @@ SUM:                            45           1750            708           6464
 Accompanying our contribution, we provide raw data for our experiments.
 In particular, we provide the errors detected and repaired for all our experiment sets.
 Note that TF & TFLite were using the same preprocessing settings by definition.
-Also, we provide the label outputs against ILSVRC2017 - which you can download from ImageNet upon request. You can find them inside `generated/<model_name>/model/data` folders for each model.
+Also, we provide the label outputs against ILSVRC2017 - which you can download from ImageNet upon request. You can find them inside `generated/<model_name>/models/data` folders for each model.
 The folder contains data for each case for Source and Target preprocessing settings (apart from TF/TFLite, which had the same setting), as well as a layer_analysis folder, demonstrating the data for running activation analysis for "suspicious" layer order, for all cases related to parameters (weights and biases).
 
