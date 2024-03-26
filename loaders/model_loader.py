@@ -151,7 +151,7 @@ class ModelLoader:
         model = self.change_input_dim(model)
         if("library" in data and "tflite" in data["library"] and keep_dims == False):
             di = shape
-            shape = (di[0], di[3], di[2], di[1])
+            shape = (di[0], di[3], di[1], di[2])
         if(not skip_inputs):
             shape_dict[data["input_name"]] = shape
             return relay.frontend.from_onnx(model, shape_dict, dtype=data["dtype"], opset=data_opset, freeze_params=True)
@@ -361,7 +361,7 @@ class ModelLoader:
             command = 'python3 -m tf2onnx.convert --opset ' + str(data_opset) + ' --graphdef "' + path + '" --inputs "' + \
             data["input_name"] + '[' + str(di[0]) + ',' + str(di[1]) + ',' + str(di[2]) + ',' + str(di[3]) + ']" --outputs "' \
             + data["output_name"] + '" --output "' + onnx_model_path + '" --inputs-as-nchw "' + \
-            str(di[0])  + ' ' + str(di[3])  + ' ' + str(di[2])   + ' ' + str(di[1]) + '"'
+            str(di[0])  + ' ' + str(di[3])  + ' ' + str(di[1])   + ' ' + str(di[2]) + '"'
             subp.check_call(command, shell=True)
             
             print ("Model exported at" + onnx_model_path)
