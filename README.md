@@ -5,7 +5,7 @@
 
 FetaFix is a comprehensive suite for compiling, optimizing, executing and analyzing pretrained DNNs under different computational environment settings.
 This work is accepted and will appear in the 2025 edition of the International Conference on Evaluation and Assessment in Software Engineering (EASE), a CORE Rank A conference.
-You can access the FetaFix paper[on ArXiv](https://arxiv.org/abs/2312.15101v4).
+You can access the FetaFix paper on [ArXiv](https://arxiv.org/abs/2312.15101v4). It will appear in EASE '25 proceedings after presentation.
 
 The system is based on DeltaNN: [Project](https://github.com/luludak/DeltaNN) | [Paper](https://arxiv.org/abs/2306.06208)
 
