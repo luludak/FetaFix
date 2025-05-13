@@ -1,14 +1,34 @@
 # FetaFix
 
-FetaFix is a comprehensive suite for compiling, optimizing, executing and analyzing pretrained DNNs under different computational environment settings. The system is based on DeltaNN: [Project](https://github.com/luludak/DeltaNN) | [Paper](https://arxiv.org/abs/2306.06208)
+![FetaFix_architecture](https://github.com/user-attachments/assets/3a73b13b-5e2d-4323-81fa-20ef1ad40e31)
+
+
+FetaFix is a comprehensive suite for compiling, optimizing, executing and analyzing pretrained DNNs under different computational environment settings.
+This work is accepted and will appear in the 2025 edition of the International Conference on Evaluation and Assessment in Software Engineering (EASE), a CORE Rank A conference.
+You can access the FetaFix paper[on ArXiv](https://arxiv.org/abs/2312.15101v4).
+
+The system is based on DeltaNN: [Project](https://github.com/luludak/DeltaNN) | [Paper](https://arxiv.org/abs/2306.06208)
 
 
 FetaFix supports:
 
 - Automatic Fault Localization across ONNX model correspondents (Source and Target) between a DL framework conversion.
-- Automatic Fault Repair of the Target model, if behavior is deviating from Source, by repairing model input, graph, parameters and hyperparameters.
+  - Supports layer activation analysis for a user-defined dataset subset.
+- Automatic Fault Repair of the Target model, if behavior is deviating from Source, establishing 6 main strategies:
+  - Preprocessing (PP)
+  - Input Dimensions (ID)
+  - Tensor Shape & Structure (TSS)
+  - Weights & Biases (WB)
+  - Layer Hyperparameters (LH)
+  - Computational Graph (CG)
+- Converter and DL Framework-agnostic fault localization & repair.
+  - The models can be converted using manual conversions or even proprietary converters.
+  - Main requirement: be able to export the model in ONNX format.
+- Full support for classification models.
+  - Other types can be easily supported by integrating a comparator for the fault repair process (e.g., comparing F1 scores for object detectors, or BLEU for text generation models).
 
-Utilizing (and integrating) the following features from DeltaNN:
+
+FetaFix Utilizes (and integrates) the following features from DeltaNN:
 - Build of Neural Networks using different backend DL Frameworks.
 - Build of DNNs under different optimization settings.
 - Build of DNNs using different GPU backends (CUDA, OpenCL, etc).
@@ -16,12 +36,12 @@ Utilizing (and integrating) the following features from DeltaNN:
 - Executing DNNs in different hardware acceleration environments.
 - Analyzing the results in a bundled and automated manner.
 
-The suite is based on [Apache TVM](https://tvm.apache.org/) for its capabilities.
+The layer analysis and GPU deployment modules are based on [Apache TVM](https://tvm.apache.org/).
 
 ## Installation
 
-The system needs TVM to be installed.
-We also use `Python v3.8.5` and `Pip` as the package installer.
+The system needs TVM, ONNX and ONNXRuntime to be installed.
+We use `Python v3.8.5` and `Pip` as the package installer.
 
 In addition, the system requires a number of pip packages, which you can find in the requirements.txt file.
 
@@ -32,6 +52,7 @@ In addition, the system requires a number of pip packages, which you can find in
 2. Download and install TVM:
 For instructions of how to install TVM, please refer to the [TVM related guide for developers](https://tvm.apache.org/docs/install/from_source.html#developers-get-source-from-github).
 Follow the installation from source instructions, and consider enabling the LLVM and the OPENCL flags.
+3. Install ONNX and ONNXRuntime using pip.
 
 3. Install necessary packages by executing the command:
 `pip3 install -r requirements.txt`
