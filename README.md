@@ -120,18 +120,18 @@ Following this, download `MobileNetV2` v1.0 from the official TensorFlow reposit
 The current configuration is setup in order to automatically build `MobileNetV2` model in `TF` and convert it to `TFLite`. Following model build, it will perform fault localization and repair analysis, against the `Test` dataset. Given our tests, it should detect a `10%` discrepancy across model versions, which should repair completely after 1 cycle consisting 9 model modifications. Following repair, it should output the repaired model in ONNX format, along with some metadata files about the repair.
 
 ## CLOC:
-FetaFix was built using DeltaNN, but it consists of over 2.5 KLOC for its Fault Localization & Repair capabilities.
+FetaFix was built using DeltaNN, but its core functionality is over 2.5 KLOC, containing its automatic Fault Localization & Repair capabilities.
 Total codebase LOC:
 
 ```
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
-Python                          30           1544            638           4569
+Python                          30           1539            633           4560
 JSON                             1              3              0            893
-Markdown                         1             34              0             84
+Markdown                         1             35              0             89
 -------------------------------------------------------------------------------
-SUM:                            32           1581            638           5546
+SUM:                            32           1577            633           5542
 -------------------------------------------------------------------------------
 
 ```
