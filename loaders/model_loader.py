@@ -1,25 +1,16 @@
-import tvm
-
+import tvm.relay as relay
+from tvm.contrib.download import download_testdata
 import pathlib
 
-import tvm.relay as relay
-
-from tvm.contrib.download import download_testdata
-from google.protobuf import text_format
-
+# TF2ONNX conversion.
 import tf2onnx
-# TODO: Refactor to remove.
-import tflite2onnx
 from tf2onnx import tf_loader
 from tf2onnx.tfonnx import process_tf_graph
 from tf2onnx.optimizer import optimize_graph
-from tf2onnx import utils, constants
-from tf2onnx.handler import tf_op
+from tf2onnx import utils
 from tensorflow.python.framework.convert_to_constants import convert_variables_to_constants_v2
-import tvm.relay.testing.tf as tf_testing
 
 from onnx_tf.backend import prepare
-
 import onnxmltools
 
 # PyTorch Conversion
@@ -33,11 +24,11 @@ import tensorflow
 import tensorflow.compat.v1 as tf
 from tensorflow import keras
 
-# ONNX to PyTorch
+# ONNX to PyTorch conversion.
 from onnx2torch import convert as convert_to_torch
 
+# ONNX to TFlite and Keras conversion.
 from external.onnx2tflite.converter import onnx_converter
-from onnx2keras import onnx_to_keras
 
 _TENSORFLOW_DOMAIN = "ai.onnx.converters.tensorflow"
 
@@ -106,7 +97,9 @@ class ModelLoader:
             path_postfix = pathlib.PurePath(path).name
             path = os.path.join(path, path_postfix + ".h5")
         keras_model = tf.keras.models.load_model(path)
+        
         keras_onnx_path = self.convert_keras_to_onnx(keras_model, data)
+
         return self.load_onnx_model(keras_onnx_path, data, skip_inputs=True)
     
     def convert_keras_library_to_onnx(self, data):
@@ -144,7 +137,7 @@ class ModelLoader:
         model = self.change_input_dim(model)
         if("library" in data and "tflite" in data["library"] and keep_dims == False):
             di = shape
-            shape = (di[0], di[3], di[1], di[2])
+            shape = (di[0], di[3], di[2], di[1])
         if(not skip_inputs):
             shape_dict[data["input_name"]] = shape
             return relay.frontend.from_onnx(model, shape_dict, dtype=data["dtype"], opset=data_opset, freeze_params=True)
@@ -157,6 +150,7 @@ class ModelLoader:
     def convert_keras_to_onnx(self, model, data, path=None):
         data_opset = data["opset"] if "opset" in data else 11
         onnx_model = onnxmltools.convert_keras(model, target_opset=data_opset) 
+        
         output_path = data["dll_models_path"] + data["name"] + "_" + data["library"] + "_final.onnx" if path is None else path
         onnxmltools.utils.save_model(onnx_model, output_path)
         return output_path
@@ -164,8 +158,9 @@ class ModelLoader:
     def convert_torch_to_onnx(self, model, data):
 
         onnx_model_path = data["dll_models_path"] + data["name"] + "_" + data["library"] + ".onnx"
-        # Let's create a dummy input tensor
+        # Let's create a dummy input tensor.
         shape = data["input"]
+
         dummy_element = torch.randn(shape[0], shape[1], shape[2], shape[3], requires_grad=True)
         dummy_input = []
 
@@ -196,12 +191,12 @@ class ModelLoader:
         return self.load_tflite_model(data, keep_dims=True, use_model_name=False)
 
     def convert_torch_to_keras_and_load_model(self, data):
+        
         model = eval(data["model"] + "(pretrained=True)")
         onnx_path = self.convert_torch_to_onnx(model, data)
         output_path = self.convert_onnx_to_keras(onnx_path, data)
         return self.load_keras_from_model_path(output_path, data)
         
-
     def convert_tflite_to_keras_and_load_model(self, data):
         # Converter reverts format, counteracting this.
         onnx_path = self.convert_tflite_path_to_onnx(data, invert_nchw_inputs=True)
@@ -293,10 +288,6 @@ class ModelLoader:
          
 
         converter = tf.compat.v1.lite.TFLiteConverter.from_saved_model(model_path)
-            
-        # converter.target_spec.supported_ops = [tf.lite.OpsSet.TFLITE_BUILTINS,
-        #                                     tf.lite.OpsSet.SELECT_TF_OPS]
-                                            
         converter.optimizations = [tf.lite.Optimize.DEFAULT]
         tf_lite_model = converter.convert()
         open(out_path, 'wb').write(tf_lite_model)
@@ -313,8 +304,6 @@ class ModelLoader:
                                                 output_arrays=[data["output_name"]]  # name of output
                                                 )
             
-        # converter.target_spec.supported_ops = [tf.lite.OpsSet.TFLITE_BUILTINS,
-        #                                     tf.lite.OpsSet.SELECT_TF_OPS]      
         converter.optimizations = [tf.lite.Optimize.DEFAULT]
         tf_lite_model = converter.convert()
         open(out_path, 'wb').write(tf_lite_model)
@@ -327,6 +316,7 @@ class ModelLoader:
         model = eval(data["model"] + "(pretrained=True)")
         model_path = self.convert_torch_to_onnx(model, data)
         tf_rep = self.convert_onnx_to_tf_and_load_via_onnx(model_path)
+
         path = data["dll_models_path"] + data["name"] + "_" + data["library"] if path is None else path
         tf_rep.export_graph(path)
         return path
@@ -353,8 +343,7 @@ class ModelLoader:
             data_opset = data["opset"] if "opset" in data else 11
             command = 'python3 -m tf2onnx.convert --opset ' + str(data_opset) + ' --graphdef "' + path + '" --inputs "' + \
             data["input_name"] + '[' + str(di[0]) + ',' + str(di[1]) + ',' + str(di[2]) + ',' + str(di[3]) + ']" --outputs "' \
-            + data["output_name"] + '" --output "' + onnx_model_path + '" --inputs-as-nchw "' + \
-            str(di[0])  + ' ' + str(di[3])  + ' ' + str(di[1])   + ' ' + str(di[2]) + '"'
+            + data["output_name"] + '" --output "' + onnx_model_path + '"'
             subp.check_call(command, shell=True)
             
             print ("Model exported at" + onnx_model_path)
@@ -377,8 +366,7 @@ class ModelLoader:
         tf.import_graph_def(newGraphModel_Optimized, name='')
         
         with tf.compat.v1.Session() as sess:
-            # print(type(sess.graph))
-            model_proto, o = tf2onnx.convert.from_graph_def(sess.graph.as_graph_def(), input_names=inputs, output_names=outputs, inputs_as_nchw=(di[0], di[3], di[2], di[1]))
+            model_proto, o = tf2onnx.convert.from_graph_def(sess.graph.as_graph_def(), input_names=inputs, output_names=outputs)
             checker = onnx.checker.check_model(model_proto)
 
             self.change_input_dim(model_proto)
@@ -447,7 +435,6 @@ class ModelLoader:
         loaded_model = onnx.load(onnx_path)
         return convert_to_torch(loaded_model)
 
-
     def convert_onnx_to_tflite(self, onnx_path, data):
         output_path = onnx_path.replace(".onnx", ".tflite")
         onnx_converter(onnx_model_path=onnx_path, int8_model=False, output_path=output_path, target_formats=['tflite'], input_node_names=[data["input_name"]], output_node_names=[data["output_name"]])
@@ -456,6 +443,7 @@ class ModelLoader:
     # Generates h5 model in folder with the same name.
     def convert_onnx_to_keras(self, onnx_path, data):
         output_path = onnx_path.replace(".onnx", "")
+        # print("ONNX TO KERAS PATH: " + output_path)
         onnx_converter(onnx_model_path=onnx_path, int8_model=False, output_path=output_path, target_formats=['keras'],  input_node_names=[data["input_name"]], output_node_names=[data["output_name"]])
         return output_path
 
