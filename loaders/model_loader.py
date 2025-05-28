@@ -41,13 +41,6 @@ from onnx2keras import onnx_to_keras
 
 _TENSORFLOW_DOMAIN = "ai.onnx.converters.tensorflow"
 
-# MXNet Conversion
-# from mxnet.gluon.model_zoo import vision as mxnetvision
-import mxnet.contrib.onnx as mxnet_onnx
-import mxnet as mx
-
-from mxnet.gluon.model_zoo.vision import get_model
-
 #To make tf 2.0 compatible with tf1.0 code, we disable the tf2.0 functionalities
 # NOTE: Use this separately to generate Keras models.
 # TODO: Add this in config.
