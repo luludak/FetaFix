@@ -82,8 +82,6 @@ class ModelPreprocessor:
             transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])])
     
             img_data = np.expand_dims(transform(img_data), axis=0)
-            if ((self.data["input"][1] == 3 and img_data.shape[1] != 3 or (self.data["input"][1] != 3  and img_data.shape[1] == 3))):
-                img_data = np.transpose(img_data, (0, 3, 2, 1))
             return img_data
 
         img_data = np.array(img_data)
@@ -91,7 +89,7 @@ class ModelPreprocessor:
         img_data = np.expand_dims(img_data, axis=0)
 
         if(img_data.shape[1] != 3):
-            img_data = np.transpose(img_data, (0, 3, 2, 1))
+            img_data = np.transpose(img_data, (0, 3, 1, 2))
 
         preprocessed_value = img_data
 
