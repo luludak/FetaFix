@@ -8,7 +8,7 @@ This work is accepted and will appear in the 2025 edition of the International C
 You can access the FetaFix paper on [ArXiv](https://arxiv.org/abs/2312.15101v4). It will appear in EASE '25 proceedings after presentation.
 
 The system is based on DeltaNN: [Project](https://github.com/luludak/DeltaNN) | [Paper](https://arxiv.org/abs/2306.06208)
-
+Using FetaFix, we detected and reported 7 new bugs and issues to 3 different converters.
 
 FetaFix supports:
 
