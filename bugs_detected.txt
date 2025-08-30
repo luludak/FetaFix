@@ -1,0 +1,13 @@
+Issues
+------
+1. tf2onnx: Quantized TFLite models converted to ONNX are implicitly dequantized, https://github.com/onnx/tensorflow-onnx/issues/2394
+2. onnxmltools: Hyperparam nodes problematically handled, https://github.com/onnx/onnxmltools/issues/716 
+3. onnxmltools: Introduction of transpose that confuses common dimensions, https://github.com/onnx/onnxmltools/issues/719
+4. onnxmltools: InceptionV3 - Shape and Gather node Pads are problematic + Gather/Unsqueeze Dims, https://github.com/onnx/onnxmltools/issues/719
+5. onnx2tflite: Redundant Output Nodes Added/PlaceHolder, https://github.com/MPolaris/onnx2tflite/issues/98
+6. onnx2tflite: Redundant Transpose Nodes, https://github.com/MPolaris/onnx2tflite/issues/98
+7. onnx2tflite: Input Dimension Implicitly Changed. Defining a new input dimension not possible to mitigate this. https://github.com/MPolaris/onnx2tflite/issues/98
+
+Feature Requests
+----------------
+1. onnx2tflite: [Feature Request] Implement manual input dimension change, https://github.com/MPolaris/onnx2tflite/issues/99
