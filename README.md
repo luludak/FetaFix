@@ -138,10 +138,14 @@ SUM:                            32           1577            633           5542
 
 ```
 
-### Raw Results Data:
+### Raw Results Data
 Accompanying our contribution, we provide raw data for our experiments.
 In particular, we provide the errors detected and repaired for all our experiment sets.
 Note that TF & TFLite were using the same preprocessing settings by definition.
 Also, we provide the label outputs against ILSVRC2017 - which you can download from ImageNet upon request. You can find them inside `generated/<model_name>/models/data` folders for each model.
 The folder contains data for each case for Source and Target preprocessing settings (apart from TF/TFLite, which had the same setting), as well as a layer_analysis folder, demonstrating the data for running activation analysis for "suspicious" layer order, for all cases related to parameters (weights and biases).
+
+
+### Notes
+Any sample dataset images provided in the repository are sourced from the internet, and their copyright(s) belong to their owner(s). The only reason of provision is purely for non-commercial, demonstration purposes of DiTOX (to showcase how it works), with respect to the copyright(s) of their owner(s) and no intention to infringe them.
 
